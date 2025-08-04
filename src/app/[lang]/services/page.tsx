@@ -29,7 +29,7 @@ export default function ServicesPage({ params: { lang } }: { params: { lang: Loc
 
       <section className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service, i) => (
-          <Reveal key={_getLabel(service.title)} delay={i * 0.1}>
+          <Reveal key={i} delay={i * 0.1}>
             <Card className="flex flex-col">
               <CardHeader>
                  <div className="flex items-start gap-4">
