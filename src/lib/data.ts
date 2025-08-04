@@ -10,27 +10,35 @@ export interface HeroSlide {
 
 export const heroSlides: HeroSlide[] = [
   {
-    imageUrl: 'https://placehold.co/1920x1080.png',
+    imageUrl: 'https://i.postimg.cc/13y4DcX5/pixlr-image-generator-68906d08208321f490784ad9-1.png',
     dataAiHint: 'construction site',
     title: 'Tekam Contracting & Engineering',
     subtitle: 'Building the Future, Restoring the Past.',
     link: '/contact',
   },
   {
-    imageUrl: 'https://placehold.co/1920x1080.png',
+    imageUrl: 'https://i.postimg.cc/BbDtBm2t/pixlr-image-generator-68906d1d8366e18f480d4a18-1.png',
     dataAiHint: 'modern architecture',
     title: 'Innovative Architectural Design',
     subtitle: 'Bringing Your Vision to Life with Precision and Style.',
     link: '/services',
   },
   {
-    imageUrl: 'https://placehold.co/1920x1080.png',
+    imageUrl: 'https://i.postimg.cc/3J5kxHHG/pixlr-image-generator-68906d1d8366e18f480d4a19-1.png',
     dataAiHint: 'bridge infrastructure',
     title: 'Excellence in Infrastructure',
     subtitle: 'Constructing Durable and Reliable Infrastructure for Tomorrow.',
     link: '/projects',
   },
+  {
+    imageUrl: 'https://i.postimg.cc/X7fpZDVz/pixlr-image-generator-68906d94208321f4907855db.png',
+    dataAiHint: 'engineering technology',
+    title: 'Advanced Engineering Solutions',
+    subtitle: 'Delivering Cutting-edge Solutions for Complex Challenges.',
+    link: '/about',
+  },
 ];
+
 
 
 export interface Service {
