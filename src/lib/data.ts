@@ -1,6 +1,4 @@
 import { GanttChartSquare, Scaling, Paintbrush, Wrench, Construction, LandPlot, type LucideIcon } from 'lucide-react';
-import type { DocumentData } from 'firebase/firestore';
-
 
 export interface Service {
   title: string;
