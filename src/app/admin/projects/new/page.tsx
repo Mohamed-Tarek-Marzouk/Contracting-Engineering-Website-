@@ -22,9 +22,9 @@ import { Textarea } from '@/components/ui/textarea';
 import Link from 'next/link';
 import { ChevronLeft, UploadCloud, X, Loader2 } from 'lucide-react';
 import { projectCategories } from '@/lib/data';
-import { useState } from 'react';
+import { useActionState, useState } from 'react';
 import Image from 'next/image';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 import { createProjectAction } from '../actions';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
@@ -42,7 +42,7 @@ function SubmitButton() {
 export default function NewProjectPage() {
   const [imagePreviews, setImagePreviews] = useState<string[]>([]);
   const initialState = { message: '', errors: {} };
-  const [state, dispatch] = useFormState(createProjectAction, initialState);
+  const [state, dispatch] = useActionState(createProjectAction, initialState);
 
   const categories = projectCategories.filter(c => c.key !== 'all');
 
