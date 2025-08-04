@@ -1,6 +1,7 @@
 'use client';
 
-import { useActionState, useFormStatus } from 'react';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { createBlogPostAction, type FormState } from '@/app/blog/actions';
 import { useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
