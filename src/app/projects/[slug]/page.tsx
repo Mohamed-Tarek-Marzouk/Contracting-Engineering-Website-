@@ -2,7 +2,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { projects } from '@/lib/data';
+import { getProjects } from '@/lib/projects';
 import { ChevronLeft } from 'lucide-react';
 import type { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
@@ -15,6 +15,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+  const projects = await getProjects();
   const project = projects.find(p => p.slug === params.slug);
   if (!project) {
     return {
@@ -27,7 +28,8 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
   }
 }
 
-export default function ProjectDetailPage({ params }: Props) {
+export default async function ProjectDetailPage({ params }: Props) {
+  const projects = await getProjects();
   const project = projects.find(p => p.slug === params.slug);
 
   if (!project) {
@@ -63,7 +65,7 @@ export default function ProjectDetailPage({ params }: Props) {
               <h2 className="text-2xl font-headline font-semibold">Project Gallery</h2>
               <Carousel className="mt-4 w-full">
                 <CarouselContent>
-                  {project.gallery.map((image, index) => (
+                  {(project.gallery || []).map((image, index) => (
                     <CarouselItem key={index}>
                       <Card className="overflow-hidden">
                         <div className="relative aspect-video">
@@ -99,7 +101,7 @@ export default function ProjectDetailPage({ params }: Props) {
                 <div>
                   <h3 className="font-semibold text-muted-foreground">Services Rendered</h3>
                   <div className="flex flex-wrap gap-2 mt-2">
-                    {project.details.services.map((service, i) => (
+                    {(project.details.services || []).map((service, i) => (
                       <Badge key={i} variant="outline">{service}</Badge>
                     ))}
                   </div>
@@ -114,6 +116,7 @@ export default function ProjectDetailPage({ params }: Props) {
 }
 
 export async function generateStaticParams() {
+  const projects = await getProjects();
   return projects.map(project => ({
     slug: project.slug,
   }));

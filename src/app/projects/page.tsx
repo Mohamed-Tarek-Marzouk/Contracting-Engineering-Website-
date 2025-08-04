@@ -1,6 +1,7 @@
 import { Reveal } from '@/components/animation/Reveal';
 import ProjectGallery from '@/components/projects/ProjectGallery';
-import { projects, projectCategories } from '@/lib/data';
+import { projectCategories } from '@/lib/data';
+import { getProjects } from '@/lib/projects';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -8,7 +9,8 @@ export const metadata: Metadata = {
   description: 'Browse the portfolio of Tekam Contracting & Engineering. Discover our completed projects across residential, commercial, government, and infrastructure sectors.',
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getProjects();
   return (
     <div className="container mx-auto py-16 px-4 md:px-6">
       <section className="text-center">

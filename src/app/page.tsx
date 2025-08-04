@@ -1,12 +1,14 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { projects, services } from '@/lib/data';
+import { services } from '@/lib/data';
+import { getProjects } from '@/lib/projects';
 import { ArrowRight, Award, Building, Users } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Reveal } from '@/components/animation/Reveal';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const projects = await getProjects();
   const featuredProjects = projects.slice(0, 3);
 
   return (
@@ -110,7 +112,7 @@ export default function HomePage() {
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {featuredProjects.map((project, i) => (
-              <Reveal key={project.slug} delay={i * 0.1}>
+              <Reveal key={project.id} delay={i * 0.1}>
                 <Card className="overflow-hidden group">
                   <div className="relative h-60">
                      <Image 
