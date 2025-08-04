@@ -1,18 +1,19 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState, useFormStatus } from 'react';
 import { createBlogPostAction, type FormState } from '@/app/blog/actions';
 import { useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Bot, Loader2 } from 'lucide-react';
 
 const initialState: FormState = {
+  status: 'idle',
   message: '',
 };
 
@@ -27,7 +28,7 @@ function SubmitButton() {
 }
 
 export function BlogGenerator() {
-  const [state, formAction] = useFormState(createBlogPostAction, initialState);
+  const [state, formAction] = useActionState(createBlogPostAction, initialState);
   const { toast } = useToast();
 
   useEffect(() => {
