@@ -2,15 +2,14 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { Logo } from '@/components/Logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import LanguageSwitcher from './LanguageSwitcher';
 import { type Locale } from '@/i18n-config';
+import HeaderActions from './HeaderActions';
 
 
 const navLinks = [
@@ -36,10 +35,8 @@ const navLabels: Record<string, {en: string, ar: string}> = {
 
 
 export function Header({ lang }: { lang: Locale }) {
-  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const isHomePage = pathname === `/${lang}`;
-
+  
   const getLabel = (key: string) => navLabels[key][lang]
 
   return (
@@ -61,7 +58,7 @@ export function Header({ lang }: { lang: Locale }) {
                 href={`/${lang}${href}`}
                 className={cn(
                   'transition-colors hover:text-foreground/80 font-medium',
-                  pathname === `/${lang}${href}` || (href === '/' && pathname === `/${lang}`) ? 'text-primary' : 'text-foreground/60'
+                  'text-foreground/60'
                 )}
               >
                 {getLabel(labelKey)}
@@ -95,7 +92,7 @@ export function Header({ lang }: { lang: Locale }) {
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={cn(
                           'text-lg font-medium transition-colors hover:text-primary',
-                           pathname === `/${lang}${href}` || (href === '/' && pathname === `/${lang}`) ? 'text-primary' : 'text-muted-foreground'
+                           'text-muted-foreground'
                         )}
                       >
                         {getLabel(labelKey)}
@@ -111,14 +108,8 @@ export function Header({ lang }: { lang: Locale }) {
           </div>
 
 
-          <div className="flex items-center gap-4 ml-6">
-             {isHomePage && <LanguageSwitcher />}
-            <div className='hidden md:flex'>
-              <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  <Link href={`/${lang}/contact`}>{getLabel('requestAQuote')}</Link>
-              </Button>
-            </div>
-          </div>
+          <HeaderActions lang={lang} getLabel={getLabel} />
+
         </div>
       </div>
     </motion.header>
