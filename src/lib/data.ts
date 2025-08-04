@@ -79,7 +79,7 @@ export const projects: Project[] = [
     title: 'Modern Villa Oasis',
     category: 'Residential',
     categoryKey: 'residential',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://i.postimg.cc/MT1Xwc4L/600-400.png',
     dataAiHint: 'modern villa exterior',
     description: 'A stunning modern villa featuring minimalist design, expansive glass walls, and a seamless indoor-outdoor flow. The project focused on creating a tranquil oasis with luxurious amenities and sustainable features.',
     details: {
@@ -99,7 +99,7 @@ export const projects: Project[] = [
     title: 'Downtown Corporate Center',
     category: 'Commercial',
     categoryKey: 'commercial',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://i.postimg.cc/MT1Xwc4L/600-400.png',
     dataAiHint: 'modern office building',
     description: 'A state-of-the-art corporate headquarters in the heart of the city. This project involved the construction of a 20-story office building with advanced facilities, collaborative workspaces, and a focus on energy efficiency.',
     details: {
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     title: 'City Main Bridge Rehabilitation',
     category: 'Infrastructure',
     categoryKey: 'infrastructure',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://i.postimg.cc/MT1Xwc4L/600-400.png',
     dataAiHint: 'large bridge construction',
     description: 'A comprehensive rehabilitation of the city\'s main arterial bridge. The project included structural repairs, seismic retrofitting, and modernization to ensure its safety and longevity for decades to come.',
     details: {
@@ -139,7 +139,7 @@ export const projects: Project[] = [
     title: 'National Library & Archives',
     category: 'Government',
     categoryKey: 'government',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://i.postimg.cc/MT1Xwc4L/600-400.png',
     dataAiHint: 'grand library building',
     description: 'Construction of a new National Library and Archives building, designed to be a landmark of cultural heritage. The facility features climate-controlled storage, public reading rooms, and exhibition spaces.',
     details: {
@@ -159,7 +159,7 @@ export const projects: Project[] = [
     title: 'Luxury Waterfront Apartments',
     category: 'Residential',
     categoryKey: 'residential',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://i.postimg.cc/MT1Xwc4L/600-400.png',
     dataAiHint: 'apartment building exterior',
     description: 'A high-end residential complex offering panoramic waterfront views. The project includes 150 luxury apartments, a private marina, and exclusive resident amenities.',
     details: {
@@ -179,7 +179,7 @@ export const projects: Project[] = [
     title: 'Heritage Building Restoration',
     category: 'Commercial',
     categoryKey: 'commercial',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://i.postimg.cc/MT1Xwc4L/600-400.png',
     dataAiHint: 'historic building facade',
     description: 'Meticulous restoration of a 19th-century heritage building, converting it into a boutique hotel. The project preserved historical architectural elements while integrating modern comforts and technologies.',
     details: {
