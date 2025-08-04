@@ -96,7 +96,7 @@ export default function AboutPage({ params: { lang } }: { params: { lang: Locale
         </Reveal>
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member, i) => (
-            <Reveal key={_getLabel(member.name)} delay={i * 0.1}>
+            <Reveal key={i} delay={i * 0.1}>
               <Card className="text-center overflow-hidden">
                 <div className="relative h-64 bg-secondary">
                    <Image 
