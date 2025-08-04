@@ -113,7 +113,7 @@ export const projects: Project[] = [
     title: 'Downtown Corporate Center',
     category: 'Commercial',
     categoryKey: 'commercial',
-    imageUrl: 'https://i.postimg.cc/MT1Xwc4L/600-400.png',
+    imageUrl: 'https://i.postimg.cc/dVn2MfdC/600-400-5.jpg',
     dataAiHint: 'modern office building',
     description: 'A state-of-the-art corporate headquarters in the heart of the city. This project involved the construction of a 20-story office building with advanced facilities, collaborative workspaces, and a focus on energy efficiency.',
     details: {
@@ -147,7 +147,7 @@ export const projects: Project[] = [
     title: 'City Main Bridge Rehabilitation',
     category: 'Infrastructure',
     categoryKey: 'infrastructure',
-    imageUrl: 'https://i.postimg.cc/MT1Xwc4L/600-400.png',
+    imageUrl: 'https://i.postimg.cc/zfh0mrwf/Leonardo-Phoenix-10-A-large-modern-city-bridge-undergoing-comp-0-1.jpg',
     dataAiHint: 'large bridge construction',
     description: 'A comprehensive rehabilitation of the city\'s main arterial bridge. The project included structural repairs, seismic retrofitting, and modernization to ensure its safety and longevity for decades to come.',
     details: {
@@ -181,7 +181,7 @@ export const projects: Project[] = [
     title: 'National Library & Archives',
     category: 'Government',
     categoryKey: 'government',
-    imageUrl: 'https://i.postimg.cc/MT1Xwc4L/600-400.png',
+    imageUrl: 'https://i.postimg.cc/0y9YBv6x/600-400-3.jpg',
     dataAiHint: 'grand library building',
     description: 'Construction of a new National Library and Archives building, designed to be a landmark of cultural heritage. The facility features climate-controlled storage, public reading rooms, and exhibition spaces.',
     details: {
@@ -215,7 +215,7 @@ export const projects: Project[] = [
     title: 'Luxury Waterfront Apartments',
     category: 'Residential',
     categoryKey: 'residential',
-    imageUrl: 'https://i.postimg.cc/MT1Xwc4L/600-400.png',
+    imageUrl: 'https://i.postimg.cc/cJHQdcMb/600-400-2.jpg',
     dataAiHint: 'apartment building exterior',
     description: 'A high-end residential complex offering panoramic waterfront views. The project includes 150 luxury apartments, a private marina, and exclusive resident amenities.',
     details: {
@@ -324,21 +324,28 @@ export const heroSlides: HeroSlide[] = [
   {
     title: 'Building a Better Future',
     subtitle: 'Excellence in Construction and Engineering',
-    imageUrl: 'https://i.postimg.cc/jdH6c2SZ/600-400-4.jpg',
+    imageUrl: 'https://i.postimg.cc/3J5kxHHG/pixlr-image-generator-68906d1d8366e18f480d4a19-1.png',
     dataAiHint: 'construction site',
     link: '/contact',
   },
   {
     title: 'Innovation in Every Detail',
     subtitle: 'From Concept to Completion',
-    imageUrl: 'https://i.postimg.cc/dVn2MfdC/600-400-5.jpg',
+    imageUrl: 'https://i.postimg.cc/X7fpZDVz/pixlr-image-generator-68906d94208321f4907855db.png',
     dataAiHint: 'architectural design blueprint',
     link: '/services',
   },
   {
     title: 'Your Vision, Our Expertise',
     subtitle: 'Let\'s Build Together',
-    imageUrl: 'https://i.postimg.cc/MT1Xwc4L/600-400.png',
+    imageUrl: 'https://i.postimg.cc/BbDtBm2t/pixlr-image-generator-68906d1d8366e18f480d4a18-1.png',
+    dataAiHint: 'team meeting construction',
+    link: '/projects',
+  },
+  {
+    title: 'Your Vision, Our Expertise',
+    subtitle: 'Let\'s Build Together',
+    imageUrl: 'https://i.postimg.cc/13y4DcX5/pixlr-image-generator-68906d08208321f490784ad9-1.png',
     dataAiHint: 'team meeting construction',
     link: '/projects',
   },
