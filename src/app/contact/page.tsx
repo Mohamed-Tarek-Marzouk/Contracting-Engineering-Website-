@@ -51,15 +51,15 @@ export default function ContactPage() {
               <CardContent className="space-y-4">
                  <div className="flex items-center gap-4">
                     <MapPin className="w-6 h-6 text-accent"/>
-                    <p>123 Engineering Lane, Construction City, 12345</p>
+                    <p>Egypt, New Valley, El Zhoor</p>
                  </div>
                  <div className="flex items-center gap-4">
                     <Phone className="w-6 h-6 text-accent"/>
-                    <a href="tel:+1234567890" className="hover:text-primary">(123) 456-7890</a>
+                    <a href="tel:+2001000196382" className="hover:text-primary">+20 01000196382</a>
                  </div>
                  <div className="flex items-center gap-4">
                     <Mail className="w-6 h-6 text-accent"/>
-                    <a href="mailto:info@tekam.com" className="hover:text-primary">info@tekam.com</a>
+                    <a href="mailto:mohamedtarekmarzouk@gmail.com" className="hover:text-primary">mohamedtarekmarzouk@gmail.com</a>
                  </div>
               </CardContent>
             </Card>
@@ -71,8 +71,16 @@ export default function ContactPage() {
                   <CardTitle className="font-headline text-2xl">Our Location</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="aspect-video bg-secondary rounded-md flex items-center justify-center">
-                   <p className="text-muted-foreground">Google Map integration placeholder</p>
+                <div className="aspect-video bg-secondary rounded-md overflow-hidden">
+                   <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7249491.886311654!2d26.235948743128913!3d26.82055322986423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x147376e14c53d105%3A0x44c414b53331b674!2sNew%20Valley%20Governorate%2C%20Egypt!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen={false}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
                 </div>
               </CardContent>
             </Card>
@@ -86,10 +94,10 @@ export default function ContactPage() {
                     <MessageSquare className="mr-2 h-4 w-4" /> WhatsApp
                   </Button>
                   <Button asChild variant="outline" className="flex-1">
-                    <a href="tel:+1234567890"><Phone className="mr-2 h-4 w-4" /> Call Us</a>
+                    <a href="tel:+2001000196382"><Phone className="mr-2 h-4 w-4" /> Call Us</a>
                   </Button>
                   <Button asChild variant="outline" className="flex-1">
-                    <a href="mailto:info@tekam.com"><Mail className="mr-2 h-4 w-4" /> Email Us</a>
+                    <a href="mailto:mohamedtarekmarzouk@gmail.com"><Mail className="mr-2 h-4 w-4" /> Email Us</a>
                   </Button>
                 </div>
              </div>

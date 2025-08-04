@@ -39,19 +39,19 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-accent" />
-                <a href="tel:+1234567890" className="text-sm hover:text-accent transition-colors">
-                  (123) 456-7890
+                <a href="tel:+2001000196382" className="text-sm hover:text-accent transition-colors">
+                  +20 01000196382
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-accent" />
-                <a href="mailto:info@tekam.com" className="text-sm hover:text-accent transition-colors">
-                  info@tekam.com
+                <a href="mailto:mohamedtarekmarzouk@gmail.com" className="text-sm hover:text-accent transition-colors">
+                  mohamedtarekmarzouk@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-accent" />
-                <span className="text-sm">123 Engineering Lane, Construction City</span>
+                <span className="text-sm">Egypt, New Valley, El Zhoor</span>
               </li>
             </ul>
           </div>
