@@ -1,14 +1,98 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { projects } from "@/lib/data";
+import { PlusCircle, MoreHorizontal } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 
 export default function AdminProjectsPage() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Manage Projects</CardTitle>
+      <CardHeader className="flex flex-row items-center justify-between">
+        <div>
+          <CardTitle>Projects</CardTitle>
+          <CardDescription>
+            Manage your company's projects. Add, edit, or delete project
+            details.
+          </CardDescription>
+        </div>
+        <Button asChild className="ml-auto gap-1">
+          <Link href="/admin/projects/new">
+            <PlusCircle className="h-4 w-4" />
+            Add New Project
+          </Link>
+        </Button>
       </CardHeader>
       <CardContent>
-        <p>Here you will be able to add, edit, and delete your projects.</p>
-        <p className="text-muted-foreground text-sm mt-2">This feature is under construction.</p>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Image</TableHead>
+              <TableHead>Title</TableHead>
+              <TableHead>Category</TableHead>
+              <TableHead>Client</TableHead>
+              <TableHead>
+                <span className="sr-only">Actions</span>
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {projects.map((project) => (
+              <TableRow key={project.slug}>
+                <TableCell>
+                  <img
+                    alt="Project image"
+                    className="aspect-square rounded-md object-cover"
+                    height="64"
+                    src={project.imageUrl}
+                    width="64"
+                  />
+                </TableCell>
+                <TableCell className="font-medium">{project.title}</TableCell>
+                <TableCell>
+                  <Badge variant="outline">{project.category}</Badge>
+                </TableCell>
+                <TableCell>{project.details.client}</TableCell>
+                <TableCell>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button aria-haspopup="true" size="icon" variant="ghost">
+                        <MoreHorizontal className="h-4 w-4" />
+                        <span className="sr-only">Toggle menu</span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                      <DropdownMenuItem>Edit</DropdownMenuItem>
+                      <DropdownMenuItem>Delete</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </CardContent>
     </Card>
   );
