@@ -2,7 +2,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { getProjects } from '@/lib/projects';
+import { projects } from '@/lib/data';
 import { ChevronLeft } from 'lucide-react';
 import type { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
@@ -15,7 +15,6 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
-  const projects = await getProjects();
   const project = projects.find(p => p.slug === params.slug);
   if (!project) {
     return {
@@ -28,8 +27,7 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
   }
 }
 
-export default async function ProjectDetailPage({ params }: Props) {
-  const projects = await getProjects();
+export default function ProjectDetailPage({ params }: Props) {
   const project = projects.find(p => p.slug === params.slug);
 
   if (!project) {
@@ -116,7 +114,6 @@ export default async function ProjectDetailPage({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-  const projects = await getProjects();
   return projects.map(project => ({
     slug: project.slug,
   }));

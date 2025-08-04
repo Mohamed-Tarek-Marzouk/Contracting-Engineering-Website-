@@ -1,14 +1,12 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { services } from '@/lib/data';
-import { getProjects } from '@/lib/projects';
+import { services, projects } from '@/lib/data';
 import { ArrowRight, Award, Building, Users } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Reveal } from '@/components/animation/Reveal';
 
-export default async function HomePage() {
-  const projects = await getProjects();
+export default function HomePage() {
   const featuredProjects = projects.slice(0, 3);
 
   return (
