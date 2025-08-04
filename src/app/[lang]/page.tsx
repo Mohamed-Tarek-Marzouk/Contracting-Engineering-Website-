@@ -23,7 +23,7 @@ export default async function HomePage({ params: { lang } }: { params: { lang: L
           src="https://placehold.co/1920x1080.png" 
           alt="Construction site background" 
           fill
-          objectFit="cover"
+          style={{objectFit: "cover"}}
           className="opacity-20"
           data-ai-hint="construction site"
           priority
@@ -123,7 +123,7 @@ export default async function HomePage({ params: { lang } }: { params: { lang: L
                       src={project.imageUrl} 
                       alt={_getLabel(project.title)} 
                       fill
-                      objectFit="cover"
+                      style={{objectFit: "cover"}}
                       className="transition-transform duration-300 group-hover:scale-105"
                       data-ai-hint={project.dataAiHint}
                     />

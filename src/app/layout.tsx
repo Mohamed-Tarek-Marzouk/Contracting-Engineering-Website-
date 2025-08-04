@@ -6,6 +6,7 @@ import { dir } from 'i18next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { AnimatedPage } from '@/components/animation/AnimatedPage';
+import { getDictionary } from '@/lib/dictionaries';
 
 export async function generateStaticParams() {
   return i18n.locales.map(locale => ({ lang: locale }));
@@ -20,13 +21,14 @@ export const metadata: Metadata = {
   keywords: ['contracting', 'engineering', 'construction', 'architectural design', 'renovation', 'infrastructure'],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: { lang: Locale };
 }) {
+  const dictionary = await getDictionary(params.lang);
   return (
     <html lang={params.lang} dir={params.lang === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <head>
@@ -42,7 +44,7 @@ export default function RootLayout({
           <main className="flex-grow">
             <AnimatedPage>{children}</AnimatedPage>
           </main>
-          <Footer lang={params.lang} />
+          <Footer lang={params.lang} dictionary={dictionary.footer} />
         </div>
         <Toaster />
       </body>

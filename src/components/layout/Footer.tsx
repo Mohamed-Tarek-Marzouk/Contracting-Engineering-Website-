@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Logo } from '@/components/Logo';
 import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { type Locale } from '@/i18n-config';
-import { getDictionary } from '@/lib/dictionaries';
+import type { getDictionary } from '@/lib/dictionaries';
 
 const navLinks = [
   { href: '/about', label: 'About Us', labelAr: 'من نحن' },
@@ -11,10 +11,12 @@ const navLinks = [
   { href: '/contact', label: 'Contact Us', labelAr: 'اتصل بنا' },
 ];
 
-export async function Footer({ lang }: { lang: Locale }) {
-  const dictionary = await getDictionary(lang);
-  const t = dictionary.footer;
-  
+interface FooterProps {
+  lang: Locale;
+  dictionary: Awaited<ReturnType<typeof getDictionary>>['footer'];
+}
+
+export function Footer({ lang, dictionary: t }: FooterProps) {
   return (
     <footer className="bg-slate-900 text-slate-50">
       <div className="container py-12 px-4 md:px-6">
