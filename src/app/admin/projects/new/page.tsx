@@ -20,9 +20,10 @@ import {
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import Link from 'next/link';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, UploadCloud, X } from 'lucide-react';
 import { projectCategories } from '@/lib/data';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function NewProjectPage() {
   const [title, setTitle] = useState('');
@@ -30,8 +31,27 @@ export default function NewProjectPage() {
   const [client, setClient] = useState('');
   const [duration, setDuration] = useState('');
   const [category, setCategory] = useState('');
+  const [images, setImages] = useState<File[]>([]);
+  const [imagePreviews, setImagePreviews] = useState<string[]>([]);
+
 
   const categories = projectCategories.filter(c => c.key !== 'all');
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const filesArray = Array.from(e.target.files);
+      setImages(prevImages => [...prevImages, ...filesArray]);
+
+      const previewsArray = filesArray.map(file => URL.createObjectURL(file));
+      setImagePreviews(prevPreviews => [...prevPreviews, ...previewsArray]);
+    }
+  };
+
+  const removeImage = (index: number) => {
+    setImages(prevImages => prevImages.filter((_, i) => i !== index));
+    setImagePreviews(prevPreviews => prevPreviews.filter((_, i) => i !== index));
+  };
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,6 +61,7 @@ export default function NewProjectPage() {
       client,
       duration,
       category,
+      images,
     };
     console.log('New Project Data:', newProject);
     // Here you would typically send the data to your backend or API
@@ -80,6 +101,7 @@ export default function NewProjectPage() {
                           placeholder="e.g., Modern Residential Villa"
                           value={title}
                           onChange={(e) => setTitle(e.target.value)}
+                          required
                         />
                       </div>
                       <div className="grid gap-3">
@@ -89,6 +111,7 @@ export default function NewProjectPage() {
                           placeholder="A stunning modern villa featuring minimalist design..."
                           value={description}
                           onChange={(e) => setDescription(e.target.value)}
+                          required
                         />
                       </div>
                        <div className="grid gap-3">
@@ -100,6 +123,7 @@ export default function NewProjectPage() {
                           placeholder="e.g., Private Client"
                           value={client}
                           onChange={(e) => setClient(e.target.value)}
+                          required
                         />
                       </div>
                        <div className="grid gap-3">
@@ -111,6 +135,7 @@ export default function NewProjectPage() {
                           placeholder="e.g., 12 Months"
                           value={duration}
                           onChange={(e) => setDuration(e.target.value)}
+                          required
                         />
                       </div>
                     </CardContent>
@@ -123,9 +148,47 @@ export default function NewProjectPage() {
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
-                        {/* Placeholder for image upload */}
-                        <div className="flex items-center justify-center w-full h-32 border-2 border-dashed rounded-lg">
-                           <p className="text-muted-foreground">Image upload coming soon</p>
+                        <div className="grid gap-4">
+                          <div className="flex items-center justify-center w-full">
+                            <Label
+                              htmlFor="dropzone-file"
+                              className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer bg-secondary hover:bg-muted"
+                            >
+                              <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                <UploadCloud className="w-8 h-8 mb-4 text-muted-foreground" />
+                                <p className="mb-2 text-sm text-muted-foreground">
+                                  <span className="font-semibold">Click to upload</span> or drag and drop
+                                </p>
+                                <p className="text-xs text-muted-foreground">PNG, JPG, GIF up to 10MB</p>
+                              </div>
+                              <Input id="dropzone-file" type="file" className="hidden" onChange={handleImageChange} multiple />
+                            </Label>
+                          </div>
+                          {imagePreviews.length > 0 && (
+                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                              {imagePreviews.map((src, index) => (
+                                <div key={index} className="relative group">
+                                  <Image
+                                    alt={`Preview ${index + 1}`}
+                                    className="aspect-square w-full rounded-md object-cover"
+                                    height="100"
+                                    src={src}
+                                    width="100"
+                                  />
+                                  <Button
+                                    type="button"
+                                    variant="destructive"
+                                    size="icon"
+                                    className="absolute top-1 right-1 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
+                                    onClick={() => removeImage(index)}
+                                  >
+                                    <X className="h-4 w-4" />
+                                    <span className="sr-only">Remove image</span>
+                                  </Button>
+                                </div>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       </CardContent>
                   </Card>
@@ -165,7 +228,9 @@ export default function NewProjectPage() {
                      <CardContent>
                        <div className="grid gap-2">
                           <Button type="submit">Save Project</Button>
-                          <Button variant="outline" type="button">Discard</Button>
+                          <Button variant="outline" asChild type="button">
+                            <Link href="/admin/projects">Discard</Link>
+                          </Button>
                        </div>
                      </CardContent>
                    </Card>
