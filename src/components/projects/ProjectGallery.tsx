@@ -3,22 +3,18 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Project, ProjectCategory } from '@/lib/data';
+import { Project, ProjectCategoryDetails } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
-import { type Locale } from '@/i18n-config';
-import { getLabelForLocale } from '@/lib/i18n';
 
 interface ProjectGalleryProps {
   projects: Project[];
-  categories: {key: string, en: string, ar: string}[];
-  lang: Locale;
+  categories: ProjectCategoryDetails[];
 }
 
-export default function ProjectGallery({ projects, categories, lang }: ProjectGalleryProps) {
+export default function ProjectGallery({ projects, categories }: ProjectGalleryProps) {
   const [activeFilter, setActiveFilter] = useState<string>('all');
-  const _getLabel = getLabelForLocale(lang);
 
   const filteredProjects = activeFilter === 'all'
     ? projects
@@ -34,7 +30,7 @@ export default function ProjectGallery({ projects, categories, lang }: ProjectGa
             variant={activeFilter === category.key ? 'default' : 'outline'}
             className="capitalize"
           >
-            {_getLabel(category)}
+            {category.name}
           </Button>
         ))}
       </div>
@@ -54,7 +50,7 @@ export default function ProjectGallery({ projects, categories, lang }: ProjectGa
                 <div className="relative h-60">
                   <Image
                     src={project.imageUrl}
-                    alt={_getLabel(project.title)}
+                    alt={project.title}
                     fill
                     style={{objectFit: "cover"}}
                     className="transition-transform duration-300 group-hover:scale-105"
@@ -62,12 +58,12 @@ export default function ProjectGallery({ projects, categories, lang }: ProjectGa
                   />
                 </div>
                 <CardHeader>
-                  <CardTitle className="font-headline">{_getLabel(project.title)}</CardTitle>
-                  <CardDescription>{_getLabel(project.category)}</CardDescription>
+                  <CardTitle className="font-headline">{project.title}</CardTitle>
+                  <CardDescription>{project.category}</CardDescription>
                 </CardHeader>
                 <CardContent className="mt-auto">
                    <Button asChild variant="link" className="p-0 text-primary">
-                    <Link href={`/${lang}/projects/${project.slug}`}>View Project Details</Link>
+                    <Link href={`/projects/${project.slug}`}>View Project Details</Link>
                   </Button>
                 </CardContent>
               </Card>

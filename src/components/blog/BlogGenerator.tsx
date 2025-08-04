@@ -2,8 +2,8 @@
 
 import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
-import { createBlogPostAction } from '@/app/[lang]/blog/actions';
-import type { FormState } from '@/app/[lang]/blog/actions';
+import { createBlogPostAction } from '@/app/blog/actions';
+import type { FormState } from '@/app/blog/actions';
 import { useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 

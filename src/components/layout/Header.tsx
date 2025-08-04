@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -8,36 +8,19 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import { type Locale } from '@/i18n-config';
-import HeaderActions from './HeaderActions';
-
 
 const navLinks = [
-  { href: '/', labelKey: 'home' },
-  { href: '/about', labelKey: 'about' },
-  { href: '/services', labelKey: 'services' },
-  { href: '/projects', labelKey: 'projects' },
-  { href: '/blog', labelKey: 'blog' },
-  { href: '/testimonials', labelKey: 'testimonials' },
-  { href: '/contact', labelKey: 'contact' },
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About Us' },
+  { href: '/services', label: 'Services' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/testimonials', label: 'Testimonials' },
+  { href: '/contact', label: 'Contact' },
 ];
 
-const navLabels: Record<string, {en: string, ar: string}> = {
-  home: { en: 'Home', ar: 'الرئيسية' },
-  about: { en: 'About Us', ar: 'من نحن' },
-  services: { en: 'Services', ar: 'خدماتنا' },
-  projects: { en: 'Projects', ar: 'مشاريعنا' },
-  blog: { en: 'Blog', ar: 'المدونة' },
-  testimonials: { en: 'Testimonials', ar: 'الشهادات' },
-  contact: { en: 'Contact', ar: 'اتصل بنا' },
-  requestAQuote: { en: 'Request A Quote', ar: 'اطلب عرض سعر' },
-}
-
-
-export function Header({ lang }: { lang: Locale }) {
+export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  const getLabel = (key: string) => navLabels[key][lang]
 
   return (
     <motion.header 
@@ -52,16 +35,16 @@ export function Header({ lang }: { lang: Locale }) {
         </div>
         <div className="flex flex-1 items-center justify-end">
           <nav className="hidden md:flex items-center gap-6 text-sm">
-            {navLinks.map(({ href, labelKey }) => (
+            {navLinks.map(({ href, label }) => (
               <Link
-                key={labelKey}
-                href={`/${lang}${href}`}
+                key={label}
+                href={href}
                 className={cn(
                   'transition-colors hover:text-foreground/80 font-medium',
                   'text-foreground/60'
                 )}
               >
-                {getLabel(labelKey)}
+                {label}
               </Link>
             ))}
           </nav>
@@ -85,17 +68,17 @@ export function Header({ lang }: { lang: Locale }) {
                     </Button>
                   </div>
                   <nav className="flex flex-col gap-4">
-                    {navLinks.map(({ href, labelKey }) => (
+                    {navLinks.map(({ href, label }) => (
                       <Link
-                        key={labelKey}
-                        href={`/${lang}${href}`}
+                        key={label}
+                        href={href}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={cn(
                           'text-lg font-medium transition-colors hover:text-primary',
                            'text-muted-foreground'
                         )}
                       >
-                        {getLabel(labelKey)}
+                        {label}
                       </Link>
                     ))}
                   </nav>
@@ -108,7 +91,13 @@ export function Header({ lang }: { lang: Locale }) {
           </div>
 
 
-          <HeaderActions lang={lang} getLabel={getLabel} />
+          <div className="flex items-center gap-4 ml-6">
+            <div className='hidden md:flex'>
+              <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
+                  <Link href="/contact">Request A Quote</Link>
+              </Button>
+            </div>
+          </div>
 
         </div>
       </div>
