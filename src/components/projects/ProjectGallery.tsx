@@ -55,7 +55,7 @@ export default function ProjectGallery({ projects, categories, lang }: ProjectGa
                   <Image
                     src={project.imageUrl}
                     alt={_getLabel(project.title)}
-                    layout="fill"
+                    fill
                     objectFit="cover"
                     className="transition-transform duration-300 group-hover:scale-105"
                     data-ai-hint={project.dataAiHint}
