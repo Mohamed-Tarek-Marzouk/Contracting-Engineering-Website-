@@ -14,7 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { projects } from "@/lib/data";
+import { getProjects } from "@/lib/projects";
 import { PlusCircle, MoreHorizontal } from "lucide-react";
 import {
   DropdownMenu,
@@ -25,8 +25,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 
-export default function AdminProjectsPage() {
+export default async function AdminProjectsPage() {
+  const projects = await getProjects();
+
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
@@ -58,14 +61,21 @@ export default function AdminProjectsPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
+             {projects.length === 0 && (
+              <TableRow>
+                <TableCell colSpan={5} className="text-center">
+                  No projects found.
+                </TableCell>
+              </TableRow>
+            )}
             {projects.map((project) => (
-              <TableRow key={project.slug}>
+              <TableRow key={project.id}>
                 <TableCell>
-                  <img
+                  <Image
                     alt="Project image"
                     className="aspect-square rounded-md object-cover"
                     height="64"
-                    src={project.imageUrl}
+                    src={project.gallery?.[0]?.url || "https://placehold.co/64x64.png"}
                     width="64"
                   />
                 </TableCell>

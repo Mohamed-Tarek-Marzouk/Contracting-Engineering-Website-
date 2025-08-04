@@ -3,6 +3,8 @@
 
 import { z } from 'zod';
 import { redirect } from 'next/navigation';
+import { addProject } from '@/lib/projects';
+import { revalidatePath } from 'next/cache';
 
 const MAX_FILE_SIZE = 5000000; // 5MB
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
@@ -49,23 +51,15 @@ export async function createProjectAction(prevState: State, formData: FormData) 
     };
   }
 
-  // At this point, you would typically handle the file uploads
-  // (e.g., save them to a cloud storage service like Firebase Storage)
-  // and then save the project data (including image URLs) to your database.
+  try {
+    await addProject(validatedFields.data);
+  } catch (error) {
+    console.error(error);
+    return {
+      message: 'Database Error: Failed to Create Project.',
+    };
+  }
   
-  // For now, we'll just log the data to the console.
-  console.log('Project data is valid and ready to be saved:');
-  console.log(validatedFields.data);
-  const images = validatedFields.data.images as File[];
-  console.log(`${images.length} images to be uploaded.`);
-  images.forEach(image => {
-    console.log(`- ${image.name} (${image.type}, ${image.size} bytes)`);
-  });
-
-
-  // On successful creation, you would typically redirect the user.
-  // We will simulate this for now, but since we don't have a database yet,
-  // we won't see the new project in the list.
+  revalidatePath('/admin/projects');
   redirect('/admin/projects');
-
 }

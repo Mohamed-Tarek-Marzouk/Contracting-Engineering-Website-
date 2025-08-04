@@ -1,4 +1,6 @@
 import { GanttChartSquare, Scaling, Paintbrush, Wrench, Construction, LandPlot, type LucideIcon } from 'lucide-react';
+import type { DocumentData } from 'firebase/firestore';
+
 
 export interface Service {
   title: string;
@@ -47,7 +49,8 @@ export interface ProjectCategoryDetails {
     name: ProjectCategory | 'All';
 }
 
-export interface Project {
+export interface Project extends DocumentData {
+  id: string;
   slug: string;
   title: string;
   category: ProjectCategory;
@@ -71,138 +74,8 @@ export const projectCategories: ProjectCategoryDetails[] = [
     { key: 'infrastructure', name: 'Infrastructure'}
 ];
 
-export const projects: Project[] = [
-  {
-    slug: 'modern-residential-villa',
-    title: 'Modern Residential Villa',
-    category: 'Residential',
-    categoryKey: 'residential',
-    imageUrl: 'https://placehold.co/600x400.png',
-    dataAiHint: 'modern house',
-    description: 'A stunning modern villa featuring minimalist design, open-plan living spaces, and state-of-the-art amenities. The project focused on creating a seamless connection between indoor and outdoor living areas.',
-    details: {
-      client: 'Private Client',
-      duration: '12 Months',
-      services: [
-        'Architectural & Structural Design',
-        'General Contracting',
-        'Finishing & Interior Works'
-      ],
-    },
-    gallery: [
-      { url: 'https://placehold.co/800x600.png', hint: 'living room' },
-      { url: 'https://placehold.co/800x600.png', hint: 'villa exterior' },
-      { url: 'https://placehold.co/800x600.png', hint: 'swimming pool' },
-    ],
-  },
-  {
-    slug: 'downtown-commercial-tower',
-    title: 'Downtown Commercial Tower',
-    category: 'Commercial',
-    categoryKey: 'commercial',
-    imageUrl: 'https://placehold.co/600x400.png',
-    dataAiHint: 'skyscraper city',
-    description: 'A 30-story commercial tower in the heart of the city, providing premium office space. The project involved advanced engineering solutions to meet seismic and wind load requirements.',
-    details: {
-      client: 'Alpha Corp',
-      duration: '36 Months',
-      services: [
-        'General Contracting',
-        'Infrastructure Works'
-      ],
-    },
-     gallery: [
-      { url: 'https://placehold.co/800x600.png', hint: 'office building' },
-      { url: 'https://placehold.co/800x600.png', hint: 'building lobby' },
-      { url: 'https://placehold.co/800x600.png', hint: 'city skyline' },
-    ],
-  },
-  {
-    slug: 'city-public-library',
-    title: 'City Public Library',
-    category: 'Government',
-    categoryKey: 'government',
-    imageUrl: 'https://placehold.co/600x400.png',
-    dataAiHint: 'library building',
-    description: 'A renovation and expansion of the city\'s main public library. The project preserved the historic facade while creating a modern, accessible interior with updated facilities for the community.',
-    details: {
-      client: 'City Municipality',
-      duration: '18 Months',
-      services: [
-        'Renovation & Maintenance',
-        'Finishing & Interior Works'
-      ],
-    },
-     gallery: [
-      { url: 'https://placehold.co/800x600.png', hint: 'library interior' },
-      { url: 'https://placehold.co/800x600.png', hint: 'building facade' },
-      { url: 'https://placehold.co/800x600.png', hint: 'reading area' },
-    ],
-  },
-  {
-    slug: 'highway-interchange-project',
-    title: 'Highway Interchange Project',
-    category: 'Infrastructure',
-    categoryKey: 'infrastructure',
-    imageUrl: 'https://placehold.co/600x400.png',
-    dataAiHint: 'highway interchange',
-    description: 'A complex highway interchange designed to improve traffic flow and reduce congestion. The project included the construction of multiple overpasses and a new drainage system.',
-    details: {
-      client: 'National Transport Authority',
-      duration: '24 Months',
-      services: ['Infrastructure Works'],
-    },
-     gallery: [
-      { url: 'https://placehold.co/800x600.png', hint: 'highway construction' },
-      { url: 'https://placehold.co/800x600.png', hint: 'road overpass' },
-      { url: 'https://placehold.co/800x600.png', hint: 'aerial view' },
-    ],
-  },
-  {
-    slug: 'coastal-apartment-complex',
-    title: 'Coastal Apartment Complex',
-    category: 'Residential',
-    categoryKey: 'residential',
-    imageUrl: 'https://placehold.co/600x400.png',
-    dataAiHint: 'apartment building',
-    description: 'A luxury apartment complex with panoramic ocean views. The design incorporates durable, corrosion-resistant materials to withstand the coastal environment.',
-    details: {
-      client: 'Seaside Developers',
-      duration: '20 Months',
-      services: [
-        'General Contracting',
-        'Architectural & Structural Design'
-      ],
-    },
-     gallery: [
-      { url: 'https://placehold.co/800x600.png', hint: 'apartment exterior' },
-      { url: 'https://placehold.co/800x600.png', hint: 'balcony view' },
-      { url: 'https://placehold.co/800x600.png', hint: 'modern kitchen' },
-    ],
-  },
-    {
-    slug: 'corporate-headquarters',
-    title: 'Corporate Headquarters',
-    category: 'Commercial',
-    categoryKey: 'commercial',
-    imageUrl: 'https://placehold.co/600x400.png',
-    dataAiHint: 'office headquarters',
-    description: 'A modern corporate headquarters featuring sustainable design elements, including a green roof and rainwater harvesting system, to achieve LEED Gold certification.',
-    details: {
-      client: 'Innovate Inc.',
-      duration: '22 Months',
-      services: [
-        'General Contracting',
-        'Finishing & Interior Works'
-      ],
-    },
-     gallery: [
-      { url: 'https://placehold.co/800x600.png', hint: 'building entrance' },
-      { url: 'https://placehold.co/800x600.png', hint: 'meeting room' },
-      { url: 'https://placehold.co/800x600.png', hint: 'open office' },
-    ],
-  },
-];
+// This data is now fetched from Firestore, but we keep the array for type safety and reference.
+export const projects: Project[] = [];
 
 export interface TeamMember {
   name: string;
