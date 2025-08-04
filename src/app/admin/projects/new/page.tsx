@@ -25,7 +25,7 @@ import { projectCategories } from '@/lib/data';
 import { useState } from 'react';
 import Image from 'next/image';
 import { useFormState, useFormStatus } from 'react-dom';
-import { createProjectAction } from './actions';
+import { createProjectAction } from '../actions';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 
@@ -251,3 +251,5 @@ export default function NewProjectPage() {
     </div>
   );
 }
+
+    
