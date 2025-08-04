@@ -1,82 +1,69 @@
-# Tekam Contracting & Engineering
+# Tekam Contracting & Engineering Website  
 
-This is a modern, professional, and fully responsive website for **Tekam Contracting & Engineering**, a company specializing in construction, architectural design, and infrastructure projects. The website is built with a modern tech stack to ensure high performance, scalability, and an excellent user experience.
-
----
-
-### ► [Live Demo](https://your-live-demo-link.com) 
-
-*(Replace the link above with your deployed project URL)*
+Tekam Contracting & Engineering is a professional, modern web application designed to showcase construction and engineering services, completed projects, and company information in a clean and elegant way. It delivers a highly responsive, visually appealing experience for potential clients while providing dynamic data management through a simple structure.  
 
 ---
 
-## Features
-
-- **Dynamic Hero Section**: A multi-slide hero banner to showcase key messages and visuals.
-- **About Us**: Company mission, vision, values, and team introduction.
-- **Services**: A detailed presentation of the services offered.
-- **Projects**: A filterable gallery of completed projects with detailed individual pages.
-- **Team Showcase**: A dedicated section to introduce the core team members.
-- **Testimonials**: Client feedback to build trust and credibility.
-- **Contact Page**: An interactive contact form and an embedded Google Map for location.
-
-## Contact Information
-
-All contact and social media information is centralized in the `src/lib/data.ts` file for easy management.
-
-- **Phone & WhatsApp**: `(+20) 01000196382`
-- **Email**: `mohamedtarekmarzouk@gmail.com`
-- **Location**: Egypt, New Valley, El Zhoor
-- **Social Media**: 
-  - [Facebook](#)
-  - [Twitter](#)
-  - [LinkedIn](#) 
-  *(Update these placeholder links in `data.ts`)*
-
-## Special UI Adjustments
-
-- **Footer**: The email address in the footer has been enlarged for better visibility and consistency. The copyright notice has been updated to:
-  > All rights reserved © Mohamed Marzouk (Tekam Contracting & Engineering)
-
-## Tech Stack
-
-- **Framework**: [Next.js](https://nextjs.org/) (React Framework)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [ShadCN UI](https://ui.shadcn.com/)
-- **Icons**: [Lucide-react](https://lucide.dev/guide/packages/lucide-react)
-- **Image Hosting**: [Postimg](https://postimg.cc/)
-
-## Project Structure
-
-The project follows a standard Next.js App Router structure. A key file to note is:
-
-- **`src/lib/data.ts`**: This file acts as a centralized database for the website's static content. It holds all the data for services, projects, team members, testimonials, contact information, hero slides, etc. This makes it incredibly easy to update website content without touching the component files.
-
-## Deployment
-
-This project is ready for deployment on platforms like Vercel or Netlify.
-
-1. **Push to GitHub**: Create a new repository on GitHub and push your project code.
-2. **Connect to Vercel/Netlify**:
-   - Sign up for a Vercel or Netlify account.
-   - Connect your GitHub account.
-   - Import the project repository.
-3. **Configure Settings**: The default Next.js settings should work out of the box. The platform will automatically detect the framework and build commands.
-4. **Environment Variables**: If you add any environment variables (e.g., for analytics or APIs), make sure to add them to your Vercel/Netlify project settings.
-5. **Deploy**: Click the deploy button, and your website will be live in minutes!
-
-## Notes
-
-- **AI-Generated Images**: The project uses AI-generated images hosted on **Postimg** as placeholders. The `data-ai-hint` attribute is included in image tags to provide context for future image selection.
-- **Hero Slides**: The hero section content is managed via the `heroSlides` array in `src/lib/data.ts`. You can easily add, remove, or modify slides by editing this array.
-- **Map Integration**: The map on the contact page is an embedded Google Map. The location can be updated by changing the `src` URL of the `iframe` in `src/app/contact/page.tsx`.
+## 🎯 Project Goal  
+The main goal of this website is to present **Tekam Contracting & Engineering** as a trusted brand in the construction and engineering field. It highlights the company’s services, past projects, and team expertise, while making it easy for clients to get in touch or request a quote.  
 
 ---
 
-## Author
+## ✨ Key Features  
 
-This project was created by:
+- **Hero Section with Slider**  
+  Rotating high-quality banners that present the company’s vision and values.  
 
-**Mohamed Marzouk**
-- **Email**: `mohamedtarekmarzouk@gmail.com`
-- **Phone**: `+20 01000196382`
+- **Services Showcase**  
+  Detailed descriptions of offered services with professional icons.  
+
+- **Projects Portfolio**  
+  - Categorized (Residential, Commercial, Government, Infrastructure).  
+  - Each project includes description, client, duration, and image gallery.  
+
+- **Team Members**  
+  Profile cards with name, role, and professional images.  
+
+- **Testimonials**  
+  Client reviews with images and company references.  
+
+- **Contact Page**  
+  - Phone, Email, WhatsApp, Social Media.  
+  - Location details with interactive map.  
+  - Contact form for quick inquiries.  
+
+- **Footer**  
+  Company contact details, copyright, and links.  
+
+- **Fully Responsive**  
+  Optimized for desktop, tablet, and mobile.  
+
+---
+
+## 📊 Data Management (src/lib/data.ts)  
+All content (**services, projects, team members, testimonials, hero slides, contact info**) is managed from a **single data file**, making it easy to update without touching layout code.  
+
+---
+
+## 🛠️ Technology Stack  
+
+- **Framework**: Next.js (App Router)  
+- **Language**: TypeScript  
+- **Styling**: Tailwind CSS  
+- **UI Components**: ShadCN UI + Lucide Icons  
+- **Hosting**: Vercel / Firebase Hosting  
+
+---
+
+## 🚀 Getting Started  
+
+### Prerequisites  
+- Node.js (v20 or later)  
+- Git installed locally  
+
+### 1. Clone the Repository  
+```bash
+git clone https://github.com/Mohamed-Tarek-Marzouk/Contracting-Engineering-Website-.git
+
+
+cd tekam-website
