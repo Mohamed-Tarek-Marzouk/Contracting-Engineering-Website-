@@ -99,9 +99,9 @@ export default function AboutPage({ params: { lang } }: { params: { lang: Locale
             <Reveal key={i} delay={i * 0.1}>
               <Card className="text-center overflow-hidden">
                 <div className="relative h-64 bg-secondary">
-                   <Image 
-                      src={member.imageUrl}
+                   <Image
                       alt={_getLabel(member.name)}
+                      src={member.imageUrl}
                       fill
                       style={{objectFit: 'cover'}}
                       data-ai-hint={member.dataAiHint}
