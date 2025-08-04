@@ -23,7 +23,7 @@ async function uploadFiles(files: File[]) {
     const downloadURL = await getDownloadURL(storageRef);
     return {
       url: downloadURL,
-      hint: '', // AI hint can be added later if needed
+      hint: 'project image', // AI hint can be added later if needed
     };
   });
   return Promise.all(uploadPromises);
@@ -56,6 +56,8 @@ export async function addProject(data: {
       categoryKey: categoryKey,
       slug: slug,
       gallery: imageUrls,
+      imageUrl: imageUrls[0]?.url || '',
+      dataAiHint: imageUrls[0]?.hint || 'project image',
       createdAt: serverTimestamp(),
     };
 
@@ -78,9 +80,9 @@ export async function getProjects(): Promise<Project[]> {
       return {
         id: doc.id,
         ...data,
-        // The main image for the list view, we'll use the first from the gallery
-        imageUrl: data.gallery?.[0]?.url || 'https://placehold.co/600x400.png',
-        dataAiHint: 'project image'
+        // The main image for the list view, we'll use the first from the gallery if not present
+        imageUrl: data.imageUrl || data.gallery?.[0]?.url || 'https://placehold.co/600x400.png',
+        dataAiHint: data.dataAiHint || 'project image'
       } as Project;
     });
     return projectsList;
