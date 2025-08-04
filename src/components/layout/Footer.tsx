@@ -1,15 +1,20 @@
 import Link from 'next/link';
 import { Logo } from '@/components/Logo';
 import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { type Locale } from '@/i18n-config';
+import { getDictionary } from '@/lib/dictionaries';
 
 const navLinks = [
-  { href: '/about', label: 'About Us' },
-  { href: '/services', label: 'Services' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/contact', label: 'Contact Us' },
+  { href: '/about', label: 'About Us', labelAr: 'من نحن' },
+  { href: '/services', label: 'Services', labelAr: 'خدماتنا' },
+  { href: '/projects', label: 'Projects', labelAr: 'مشاريعنا' },
+  { href: '/contact', label: 'Contact Us', labelAr: 'اتصل بنا' },
 ];
 
-export function Footer() {
+export async function Footer({ lang }: { lang: Locale }) {
+  const dictionary = await getDictionary(lang);
+  const t = dictionary.footer;
+  
   return (
     <footer className="bg-slate-900 text-slate-50">
       <div className="container py-12 px-4 md:px-6">
@@ -17,17 +22,17 @@ export function Footer() {
           <div className="space-y-4">
             <Logo className="fill-slate-50 text-slate-50" />
             <p className="text-sm text-slate-300">
-              Your trusted partner in construction and engineering, delivering excellence and innovation from start to finish.
+              {t.tagline}
             </p>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-accent font-headline">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-accent font-headline">{t.quickLinks}</h3>
             <ul className="mt-4 space-y-2">
-              {navLinks.map(({ href, label }) => (
+              {navLinks.map(({ href, label, labelAr }) => (
                 <li key={label}>
-                  <Link href={href} className="text-sm hover:text-accent transition-colors">
-                    {label}
+                  <Link href={`/${lang}${href}`} className="text-sm hover:text-accent transition-colors">
+                    {lang === 'ar' ? labelAr : label}
                   </Link>
                 </li>
               ))}
@@ -35,7 +40,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-accent font-headline">Contact Info</h3>
+            <h3 className="text-lg font-semibold text-accent font-headline">{t.contactInfo}</h3>
             <ul className="mt-4 space-y-3">
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-accent" />
@@ -57,7 +62,7 @@ export function Footer() {
           </div>
 
           <div>
-             <h3 className="text-lg font-semibold text-accent font-headline">Follow Us</h3>
+             <h3 className="text-lg font-semibold text-accent font-headline">{t.followUs}</h3>
             <div className="flex mt-4 space-x-4">
               <Link href="#" aria-label="Facebook">
                 <Facebook className="h-6 w-6 text-slate-50 hover:text-accent transition-colors" />
@@ -73,7 +78,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t border-slate-700 text-center text-sm text-slate-400">
-          <p>&copy; {new Date().getFullYear()} Tekam Contracting & Engineering. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {t.rightsReserved}</p>
         </div>
       </div>
     </footer>

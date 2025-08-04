@@ -1,0 +1,23 @@
+{
+  "homepage": {
+    "heroTitle": "تيكام للمقاولات والهندسة",
+    "heroSubtitle": "نبني المستقبل، ونعيد إحياء الماضي.",
+    "requestQuote": "اطلب عرض سعر",
+    "statsExperience": "سنوات من الخبرة",
+    "statsProjects": "مشروع مكتمل",
+    "statsClients": "عميل سعيد",
+    "servicesTitle": "خدماتنا",
+    "servicesDescription": "نحن نقدم مجموعة واسعة من الخدمات لتلبية الاحتياجات المتنوعة لعملائنا، من التصميم الأولي إلى البناء النهائي والصيانة.",
+    "viewAllServices": "عرض كل الخدمات",
+    "featuredProjectsTitle": "مشاريعنا المميزة",
+    "viewProject": "عرض المشروع",
+    "viewAllProjects": "عرض كل المشاريع"
+  },
+  "footer": {
+    "tagline": "شريكك الموثوق في البناء والهندسة، نقدم التميز والابتكار من البداية إلى النهاية.",
+    "quickLinks": "روابط سريعة",
+    "contactInfo": "معلومات الاتصال",
+    "followUs": "تابعنا",
+    "rightsReserved": "تيكام للمقاولات والهندسة. جميع الحقوق محفوظة."
+  }
+}

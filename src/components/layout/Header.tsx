@@ -9,20 +9,37 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import LanguageSwitcher from './LanguageSwitcher';
+import { type Locale } from '@/i18n-config';
+
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About Us' },
-  { href: '/services', label: 'Services' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/testimonials', label: 'Testimonials' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/', labelKey: 'home' },
+  { href: '/about', labelKey: 'about' },
+  { href: '/services', labelKey: 'services' },
+  { href: '/projects', labelKey: 'projects' },
+  { href: '/blog', labelKey: 'blog' },
+  { href: '/testimonials', labelKey: 'testimonials' },
+  { href: '/contact', labelKey: 'contact' },
 ];
 
-export function Header() {
+const navLabels: Record<string, {en: string, ar: string}> = {
+  home: { en: 'Home', ar: 'الرئيسية' },
+  about: { en: 'About Us', ar: 'من نحن' },
+  services: { en: 'Services', ar: 'خدماتنا' },
+  projects: { en: 'Projects', ar: 'مشاريعنا' },
+  blog: { en: 'Blog', ar: 'المدونة' },
+  testimonials: { en: 'Testimonials', ar: 'الشهادات' },
+  contact: { en: 'Contact', ar: 'اتصل بنا' },
+  requestAQuote: { en: 'Request A Quote', ar: 'اطلب عرض سعر' },
+}
+
+
+export function Header({ lang }: { lang: Locale }) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const getLabel = (key: string) => navLabels[key][lang]
 
   return (
     <motion.header 
@@ -37,16 +54,16 @@ export function Header() {
         </div>
         <div className="flex flex-1 items-center justify-end">
           <nav className="hidden md:flex items-center gap-6 text-sm">
-            {navLinks.map(({ href, label }) => (
+            {navLinks.map(({ href, labelKey }) => (
               <Link
-                key={label}
-                href={href}
+                key={labelKey}
+                href={`/${lang}${href}`}
                 className={cn(
                   'transition-colors hover:text-foreground/80 font-medium',
-                  pathname === href ? 'text-primary' : 'text-foreground/60'
+                  pathname === `/${lang}${href}` || (href === '/' && pathname === `/${lang}`) ? 'text-primary' : 'text-foreground/60'
                 )}
               >
-                {label}
+                {getLabel(labelKey)}
               </Link>
             ))}
           </nav>
@@ -70,17 +87,17 @@ export function Header() {
                     </Button>
                   </div>
                   <nav className="flex flex-col gap-4">
-                    {navLinks.map(({ href, label }) => (
+                    {navLinks.map(({ href, labelKey }) => (
                       <Link
-                        key={label}
-                        href={href}
+                        key={labelKey}
+                        href={`/${lang}${href}`}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={cn(
                           'text-lg font-medium transition-colors hover:text-primary',
-                          pathname === href ? 'text-primary' : 'text-muted-foreground'
+                           pathname === `/${lang}${href}` || (href === '/' && pathname === `/${lang}`) ? 'text-primary' : 'text-muted-foreground'
                         )}
                       >
-                        {label}
+                        {getLabel(labelKey)}
                       </Link>
                     ))}
                   </nav>
@@ -93,10 +110,13 @@ export function Header() {
           </div>
 
 
-          <div className="hidden md:flex items-center gap-2 ml-6">
-            <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
-                <Link href="/contact">Request A Quote</Link>
-            </Button>
+          <div className="flex items-center gap-4 ml-6">
+             <LanguageSwitcher />
+            <div className='hidden md:flex'>
+              <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
+                  <Link href={`/${lang}/contact`}>{getLabel('requestAQuote')}</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

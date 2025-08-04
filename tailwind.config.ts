@@ -20,6 +20,7 @@ export default {
         body: ['PT Sans', 'sans-serif'],
         headline: ['Playfair Display', 'serif'],
         code: ['monospace'],
+        arabic: ['Cairo', 'sans-serif'],
       },
       colors: {
         background: 'hsl(var(--background))',

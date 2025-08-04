@@ -1,0 +1,23 @@
+{
+  "homepage": {
+    "heroTitle": "Tekam Contracting & Engineering",
+    "heroSubtitle": "Building the Future, Restoring the Past.",
+    "requestQuote": "Request a Quote",
+    "statsExperience": "Years of Experience",
+    "statsProjects": "Completed Projects",
+    "statsClients": "Happy Clients",
+    "servicesTitle": "Our Services",
+    "servicesDescription": "We provide a wide range of services to meet the diverse needs of our clients, from initial design to final construction and maintenance.",
+    "viewAllServices": "View All Services",
+    "featuredProjectsTitle": "Featured Projects",
+    "viewProject": "View Project",
+    "viewAllProjects": "View All Projects"
+  },
+  "footer": {
+    "tagline": "Your trusted partner in construction and engineering, delivering excellence and innovation from start to finish.",
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact Info",
+    "followUs": "Follow Us",
+    "rightsReserved": "Tekam Contracting & Engineering. All Rights Reserved."
+  }
+}
