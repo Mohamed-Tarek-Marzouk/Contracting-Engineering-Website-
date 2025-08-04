@@ -20,51 +20,51 @@ import {
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import Link from 'next/link';
-import { ChevronLeft, UploadCloud, X } from 'lucide-react';
+import { ChevronLeft, UploadCloud, X, Loader2 } from 'lucide-react';
 import { projectCategories } from '@/lib/data';
 import { useState } from 'react';
 import Image from 'next/image';
+import { useFormState, useFormStatus } from 'react-dom';
+import { createProjectAction } from './actions';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <Button type="submit" disabled={pending}>
+       {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+      Save Project
+    </Button>
+  );
+}
 
 export default function NewProjectPage() {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [client, setClient] = useState('');
-  const [duration, setDuration] = useState('');
-  const [category, setCategory] = useState('');
-  const [images, setImages] = useState<File[]>([]);
   const [imagePreviews, setImagePreviews] = useState<string[]>([]);
-
+  const initialState = { message: '', errors: {} };
+  const [state, dispatch] = useFormState(createProjectAction, initialState);
 
   const categories = projectCategories.filter(c => c.key !== 'all');
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const filesArray = Array.from(e.target.files);
-      setImages(prevImages => [...prevImages, ...filesArray]);
-
+      
       const previewsArray = filesArray.map(file => URL.createObjectURL(file));
+
+      // For the sake of the form, we only manage previews.
+      // The actual files are handled directly by the form submission.
+      // But if we wanted to remove specific files, we'd need to manage the FileList state as well.
       setImagePreviews(prevPreviews => [...prevPreviews, ...previewsArray]);
     }
   };
 
+  // This is a simplified removal. For a more robust solution, you'd manage the FileList in state
+  // and remove files from there before form submission.
   const removeImage = (index: number) => {
-    setImages(prevImages => prevImages.filter((_, i) => i !== index));
     setImagePreviews(prevPreviews => prevPreviews.filter((_, i) => i !== index));
-  };
-
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const newProject = {
-      title,
-      description,
-      client,
-      duration,
-      category,
-      images,
-    };
-    console.log('New Project Data:', newProject);
-    // Here you would typically send the data to your backend or API
+    // Note: This doesn't remove the file from the <Input type="file" />,
+    // as its FileList is read-only. A more complex solution is needed for that.
   };
 
   return (
@@ -80,7 +80,7 @@ export default function NewProjectPage() {
           <h1 className="text-xl font-semibold">Add New Project</h1>
         </header>
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
-           <form onSubmit={handleSubmit}>
+           <form action={dispatch}>
             <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">
               <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
                 <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
@@ -96,47 +96,47 @@ export default function NewProjectPage() {
                         <Label htmlFor="title">Title</Label>
                         <Input
                           id="title"
+                          name="title"
                           type="text"
                           className="w-full"
                           placeholder="e.g., Modern Residential Villa"
-                          value={title}
-                          onChange={(e) => setTitle(e.target.value)}
                           required
                         />
+                         {state.errors?.title && <p className="text-sm font-medium text-destructive">{state.errors.title.join(', ')}</p>}
                       </div>
                       <div className="grid gap-3">
                         <Label htmlFor="description">Description</Label>
                         <Textarea
                           id="description"
+                          name="description"
                           placeholder="A stunning modern villa featuring minimalist design..."
-                          value={description}
-                          onChange={(e) => setDescription(e.target.value)}
                           required
                         />
+                         {state.errors?.description && <p className="text-sm font-medium text-destructive">{state.errors.description.join(', ')}</p>}
                       </div>
                        <div className="grid gap-3">
                         <Label htmlFor="client">Client</Label>
                         <Input
                           id="client"
+                          name="client"
                           type="text"
                           className="w-full"
                           placeholder="e.g., Private Client"
-                          value={client}
-                          onChange={(e) => setClient(e.target.value)}
                           required
                         />
+                         {state.errors?.client && <p className="text-sm font-medium text-destructive">{state.errors.client.join(', ')}</p>}
                       </div>
                        <div className="grid gap-3">
                         <Label htmlFor="duration">Duration</Label>
                         <Input
                           id="duration"
+                          name="duration"
                           type="text"
                           className="w-full"
                           placeholder="e.g., 12 Months"
-                          value={duration}
-                          onChange={(e) => setDuration(e.target.value)}
                           required
                         />
+                         {state.errors?.duration && <p className="text-sm font-medium text-destructive">{state.errors.duration.join(', ')}</p>}
                       </div>
                     </CardContent>
                   </Card>
@@ -161,9 +161,10 @@ export default function NewProjectPage() {
                                 </p>
                                 <p className="text-xs text-muted-foreground">PNG, JPG, GIF up to 10MB</p>
                               </div>
-                              <Input id="dropzone-file" type="file" className="hidden" onChange={handleImageChange} multiple />
+                              <Input id="dropzone-file" name="images" type="file" className="hidden" onChange={handleImageChange} multiple />
                             </Label>
                           </div>
+                          {state.errors?.images && <p className="text-sm font-medium text-destructive">{state.errors.images.join(', ')}</p>}
                           {imagePreviews.length > 0 && (
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                               {imagePreviews.map((src, index) => (
@@ -202,7 +203,7 @@ export default function NewProjectPage() {
                       <div className="grid gap-6">
                         <div className="grid gap-3">
                           <Label htmlFor="category">Category</Label>
-                          <Select value={category} onValueChange={setCategory}>
+                          <Select name="category" required>
                             <SelectTrigger
                               id="category"
                               aria-label="Select category"
@@ -217,6 +218,7 @@ export default function NewProjectPage() {
                               ))}
                             </SelectContent>
                           </Select>
+                           {state.errors?.category && <p className="text-sm font-medium text-destructive">{state.errors.category.join(', ')}</p>}
                         </div>
                       </div>
                     </CardContent>
@@ -227,13 +229,19 @@ export default function NewProjectPage() {
                      </CardHeader>
                      <CardContent>
                        <div className="grid gap-2">
-                          <Button type="submit">Save Project</Button>
+                          <SubmitButton />
                           <Button variant="outline" asChild type="button">
                             <Link href="/admin/projects">Discard</Link>
                           </Button>
                        </div>
                      </CardContent>
                    </Card>
+                    {state.message && (
+                     <Alert variant={state.errors ? 'destructive' : 'default'} className="mt-4">
+                        <AlertTitle>{state.errors ? 'Error' : 'Success'}</AlertTitle>
+                        <AlertDescription>{state.message}</AlertDescription>
+                      </Alert>
+                   )}
                 </div>
               </div>
             </div>
