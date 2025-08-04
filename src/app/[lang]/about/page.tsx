@@ -103,7 +103,7 @@ export default function AboutPage({ params: { lang } }: { params: { lang: Locale
                       src={member.imageUrl}
                       alt={_getLabel(member.name)}
                       fill
-                      objectFit="cover"
+                      style={{objectFit: 'cover'}}
                       data-ai-hint={member.dataAiHint}
                     />
                 </div>
