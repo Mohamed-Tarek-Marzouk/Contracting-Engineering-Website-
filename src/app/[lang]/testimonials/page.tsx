@@ -4,13 +4,17 @@ import { testimonials } from '@/lib/data';
 import { Quote } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { type Locale } from '@/i18n-config';
+import { getLabelForLocale } from '@/lib/i18n';
 
 export const metadata: Metadata = {
   title: 'Testimonials',
   description: 'Read what our clients have to say about their experience working with Tekam Contracting & Engineering.',
 };
 
-export default function TestimonialsPage() {
+export default function TestimonialsPage({ params: { lang } }: { params: { lang: Locale }}) {
+  const _getLabel = getLabelForLocale(lang);
+  
   return (
     <div className="container mx-auto py-16 px-4 md:px-6">
       <section className="text-center">
@@ -30,19 +34,19 @@ export default function TestimonialsPage() {
             <Card className="flex flex-col">
               <CardContent className="p-6 flex-grow flex flex-col">
                 <Quote className="w-8 h-8 text-accent mb-4" />
-                <p className="text-muted-foreground flex-grow">"{testimonial.quote}"</p>
+                <p className="text-muted-foreground">"{_getLabel(testimonial.quote)}"</p>
                 <div className="mt-6 flex items-center gap-4">
                   <Image
                     src={testimonial.imageUrl}
-                    alt={testimonial.name}
+                    alt={_getLabel(testimonial.name)}
                     width={60}
                     height={60}
                     className="rounded-full"
                     data-ai-hint={testimonial.dataAiHint}
                   />
                   <div>
-                    <h3 className="font-semibold text-lg">{testimonial.name}</h3>
-                    <p className="text-sm text-muted-foreground">{testimonial.company}</p>
+                    <h3 className="font-semibold text-lg">{_getLabel(testimonial.name)}</h3>
+                    <p className="text-sm text-muted-foreground">{_getLabel(testimonial.company)}</p>
                   </div>
                 </div>
               </CardContent>

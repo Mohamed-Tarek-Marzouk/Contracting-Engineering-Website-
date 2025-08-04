@@ -9,12 +9,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Reveal } from '@/components/animation/Reveal';
+import { type Locale } from '@/i18n-config';
+import { getLabelForLocale } from '@/lib/i18n';
 
 type Props = {
-  params: { slug: string };
+  params: { slug: string, lang: Locale };
 };
 
 export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+  const _getLabel = getLabelForLocale(params.lang);
   const project = projects.find(p => p.slug === params.slug);
   if (!project) {
     return {
@@ -22,23 +25,24 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
     }
   }
   return {
-    title: project.title,
-    description: project.description,
+    title: _getLabel(project.title),
+    description: _getLabel(project.description),
   }
 }
 
 export default function ProjectDetailPage({ params }: Props) {
   const project = projects.find(p => p.slug === params.slug);
+  const _getLabel = getLabelForLocale(params.lang);
 
   if (!project) {
-    notfound();
+    notFound();
   }
 
   return (
     <div className="container mx-auto py-16 px-4 md:px-6">
       <Reveal>
         <Button asChild variant="ghost" className="mb-8">
-          <Link href="/projects">
+          <Link href={`/${params.lang}/projects`}>
             <ChevronLeft className="mr-2 h-4 w-4" />
             Back to Projects
           </Link>
@@ -49,13 +53,13 @@ export default function ProjectDetailPage({ params }: Props) {
         {/* Main Content */}
         <div className="lg:col-span-3">
           <Reveal>
-            <h1 className="text-4xl md:text-5xl font-headline font-bold">{project.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-headline font-bold">{_getLabel(project.title)}</h1>
           </Reveal>
           <Reveal delay={0.1}>
-            <Badge variant="secondary" className="mt-4 text-sm">{project.category}</Badge>
+            <Badge variant="secondary" className="mt-4 text-sm">{_getLabel(project.category)}</Badge>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="mt-6 text-lg text-muted-foreground">{project.description}</p>
+            <p className="mt-6 text-lg text-muted-foreground">{_getLabel(project.description)}</p>
           </Reveal>
           
           <Reveal delay={0.3}>
@@ -67,7 +71,7 @@ export default function ProjectDetailPage({ params }: Props) {
                     <CarouselItem key={index}>
                       <Card className="overflow-hidden">
                         <div className="relative aspect-video">
-                          <Image src={image.url} alt={`${project.title} - image ${index + 1}`} fill objectFit="cover" data-ai-hint={image.hint} />
+                          <Image src={image.url} alt={`${_getLabel(project.title)} - image ${index + 1}`} fill objectFit="cover" data-ai-hint={image.hint} />
                         </div>
                       </Card>
                     </CarouselItem>
@@ -90,17 +94,17 @@ export default function ProjectDetailPage({ params }: Props) {
               <CardContent className="space-y-4">
                 <div>
                   <h3 className="font-semibold text-muted-foreground">Client</h3>
-                  <p className="font-medium text-lg">{project.details.client}</p>
+                  <p className="font-medium text-lg">{_getLabel(project.details.client)}</p>
                 </div>
                 <div>
                   <h3 className="font-semibold text-muted-foreground">Duration</h3>
-                  <p className="font-medium text-lg">{project.details.duration}</p>
+                  <p className="font-medium text-lg">{_getLabel(project.details.duration)}</p>
                 </div>
                 <div>
                   <h3 className="font-semibold text-muted-foreground">Services Rendered</h3>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {project.details.services.map(service => (
-                      <Badge key={service} variant="outline">{service}</Badge>
+                      <Badge key={_getLabel(service)} variant="outline">{_getLabel(service)}</Badge>
                     ))}
                   </div>
                 </div>

@@ -7,37 +7,34 @@ import { Project, ProjectCategory } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
+import { type Locale } from '@/i18n-config';
+import { getLabelForLocale } from '@/lib/i18n';
 
 interface ProjectGalleryProps {
   projects: Project[];
-  categories: ProjectCategory[];
+  categories: {key: string, en: string, ar: string}[];
+  lang: Locale;
 }
 
-export default function ProjectGallery({ projects, categories }: ProjectGalleryProps) {
-  const [activeFilter, setActiveFilter] = useState<ProjectCategory | 'All'>('All');
+export default function ProjectGallery({ projects, categories, lang }: ProjectGalleryProps) {
+  const [activeFilter, setActiveFilter] = useState<string>('all');
+  const _getLabel = getLabelForLocale(lang);
 
-  const filteredProjects = activeFilter === 'All'
+  const filteredProjects = activeFilter === 'all'
     ? projects
-    : projects.filter(p => p.category === activeFilter);
+    : projects.filter(p => p.categoryKey === activeFilter);
 
   return (
     <div>
       <div className="flex justify-center flex-wrap gap-2 mb-8">
-        <Button
-          onClick={() => setActiveFilter('All')}
-          variant={activeFilter === 'All' ? 'default' : 'outline'}
-          className="capitalize"
-        >
-          All
-        </Button>
         {categories.map(category => (
           <Button
-            key={category}
-            onClick={() => setActiveFilter(category)}
-            variant={activeFilter === category ? 'default' : 'outline'}
+            key={category.key}
+            onClick={() => setActiveFilter(category.key)}
+            variant={activeFilter === category.key ? 'default' : 'outline'}
             className="capitalize"
           >
-            {category}
+            {_getLabel(category)}
           </Button>
         ))}
       </div>
@@ -57,7 +54,7 @@ export default function ProjectGallery({ projects, categories }: ProjectGalleryP
                 <div className="relative h-60">
                   <Image
                     src={project.imageUrl}
-                    alt={project.title}
+                    alt={_getLabel(project.title)}
                     layout="fill"
                     objectFit="cover"
                     className="transition-transform duration-300 group-hover:scale-105"
@@ -65,12 +62,12 @@ export default function ProjectGallery({ projects, categories }: ProjectGalleryP
                   />
                 </div>
                 <CardHeader>
-                  <CardTitle className="font-headline">{project.title}</CardTitle>
-                  <CardDescription>{project.category}</CardDescription>
+                  <CardTitle className="font-headline">{_getLabel(project.title)}</CardTitle>
+                  <CardDescription>{_getLabel(project.category)}</CardDescription>
                 </CardHeader>
                 <CardContent className="mt-auto">
                    <Button asChild variant="link" className="p-0 text-primary">
-                    <Link href={`/projects/${project.slug}`}>View Project Details</Link>
+                    <Link href={`/${lang}/projects/${project.slug}`}>View Project Details</Link>
                   </Button>
                 </CardContent>
               </Card>

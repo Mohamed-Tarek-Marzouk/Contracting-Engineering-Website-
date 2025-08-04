@@ -1,6 +1,8 @@
 import { Reveal } from '@/components/animation/Reveal';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { services } from '@/lib/data';
+import { getLabelForLocale } from '@/lib/i18n';
+import { type Locale } from '@/i18n-config';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -9,7 +11,9 @@ export const metadata: Metadata = {
 };
 
 
-export default function ServicesPage() {
+export default function ServicesPage({ params: { lang } }: { params: { lang: Locale }}) {
+  const _getLabel = getLabelForLocale(lang);
+  
   return (
     <div className="container mx-auto py-16 px-4 md:px-6">
       <section className="text-center">
@@ -25,18 +29,18 @@ export default function ServicesPage() {
 
       <section className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service, i) => (
-          <Reveal key={service.title} delay={i * 0.1}>
+          <Reveal key={_getLabel(service.title)} delay={i * 0.1}>
             <Card className="flex flex-col">
               <CardHeader>
                  <div className="flex items-start gap-4">
                     <div className="p-3 bg-accent/20 rounded-md">
                        <service.icon className="w-8 h-8 text-accent" />
                     </div>
-                   <CardTitle className="font-headline text-2xl mt-2">{service.title}</CardTitle>
+                   <CardTitle className="font-headline text-2xl mt-2">{_getLabel(service.title)}</CardTitle>
                  </div>
               </CardHeader>
               <CardContent className="flex-grow">
-                <p className="text-muted-foreground">{service.description}</p>
+                <p className="text-muted-foreground">{_getLabel(service.description)}</p>
               </CardContent>
             </Card>
           </Reveal>

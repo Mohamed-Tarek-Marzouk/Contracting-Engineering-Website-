@@ -3,13 +3,17 @@ import { team } from '@/lib/data';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Reveal } from '@/components/animation/Reveal';
+import { type Locale } from '@/i18n-config';
+import { getLabelForLocale } from '@/lib/i18n';
 
 export const metadata: Metadata = {
   title: 'About Us',
   description: 'Learn about Tekam Contracting & Engineering, our mission, vision, and the expert team driving our success.',
 };
 
-export default function AboutPage() {
+export default function AboutPage({ params: { lang } }: { params: { lang: Locale }}) {
+  const _getLabel = getLabelForLocale(lang);
+  
   return (
     <div className="container mx-auto py-16 px-4 md:px-6">
       {/* Company Overview Section */}
@@ -92,20 +96,20 @@ export default function AboutPage() {
         </Reveal>
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member, i) => (
-            <Reveal key={member.name} delay={i * 0.1}>
+            <Reveal key={_getLabel(member.name)} delay={i * 0.1}>
               <Card className="text-center overflow-hidden">
                 <div className="relative h-64 bg-secondary">
                    <Image 
                       src={member.imageUrl}
-                      alt={member.name}
+                      alt={_getLabel(member.name)}
                       fill
                       objectFit="cover"
                       data-ai-hint={member.dataAiHint}
                     />
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-headline font-semibold">{member.name}</h3>
-                  <p className="text-accent font-medium">{member.role}</p>
+                  <h3 className="text-xl font-headline font-semibold">{_getLabel(member.name)}</h3>
+                  <p className="text-accent font-medium">{_getLabel(member.role)}</p>
                 </CardContent>
               </Card>
             </Reveal>
