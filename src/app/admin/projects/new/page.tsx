@@ -1,4 +1,6 @@
 
+'use client';
+
 import {
   Card,
   CardContent,
@@ -20,9 +22,29 @@ import { Textarea } from '@/components/ui/textarea';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 import { projectCategories } from '@/lib/data';
+import { useState } from 'react';
 
 export default function NewProjectPage() {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [client, setClient] = useState('');
+  const [duration, setDuration] = useState('');
+  const [category, setCategory] = useState('');
+
   const categories = projectCategories.filter(c => c.key !== 'all');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newProject = {
+      title,
+      description,
+      client,
+      duration,
+      category,
+    };
+    console.log('New Project Data:', newProject);
+    // Here you would typically send the data to your backend or API
+  };
 
   return (
     <div className="flex min-h-screen w-full flex-col">
@@ -37,7 +59,7 @@ export default function NewProjectPage() {
           <h1 className="text-xl font-semibold">Add New Project</h1>
         </header>
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
-           <form>
+           <form onSubmit={handleSubmit}>
             <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">
               <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
                 <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
@@ -56,6 +78,8 @@ export default function NewProjectPage() {
                           type="text"
                           className="w-full"
                           placeholder="e.g., Modern Residential Villa"
+                          value={title}
+                          onChange={(e) => setTitle(e.target.value)}
                         />
                       </div>
                       <div className="grid gap-3">
@@ -63,6 +87,8 @@ export default function NewProjectPage() {
                         <Textarea
                           id="description"
                           placeholder="A stunning modern villa featuring minimalist design..."
+                          value={description}
+                          onChange={(e) => setDescription(e.target.value)}
                         />
                       </div>
                        <div className="grid gap-3">
@@ -72,6 +98,8 @@ export default function NewProjectPage() {
                           type="text"
                           className="w-full"
                           placeholder="e.g., Private Client"
+                          value={client}
+                          onChange={(e) => setClient(e.target.value)}
                         />
                       </div>
                        <div className="grid gap-3">
@@ -81,6 +109,8 @@ export default function NewProjectPage() {
                           type="text"
                           className="w-full"
                           placeholder="e.g., 12 Months"
+                          value={duration}
+                          onChange={(e) => setDuration(e.target.value)}
                         />
                       </div>
                     </CardContent>
@@ -109,7 +139,7 @@ export default function NewProjectPage() {
                       <div className="grid gap-6">
                         <div className="grid gap-3">
                           <Label htmlFor="category">Category</Label>
-                          <Select>
+                          <Select value={category} onValueChange={setCategory}>
                             <SelectTrigger
                               id="category"
                               aria-label="Select category"
@@ -134,8 +164,8 @@ export default function NewProjectPage() {
                      </CardHeader>
                      <CardContent>
                        <div className="grid gap-2">
-                          <Button>Save Project</Button>
-                          <Button variant="outline">Discard</Button>
+                          <Button type="submit">Save Project</Button>
+                          <Button variant="outline" type="button">Discard</Button>
                        </div>
                      </CardContent>
                    </Card>
