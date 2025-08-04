@@ -66,10 +66,6 @@ export async function createProjectAction(prevState: State, formData: FormData) 
   // On successful creation, you would typically redirect the user.
   // We will simulate this for now, but since we don't have a database yet,
   // we won't see the new project in the list.
-  // redirect('/admin/projects');
+  redirect('/admin/projects');
 
-  // Instead, we'll return a success message.
-  return {
-    message: 'Project created successfully! (Simulation)',
-  }
 }

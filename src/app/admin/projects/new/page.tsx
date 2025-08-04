@@ -236,9 +236,9 @@ export default function NewProjectPage() {
                        </div>
                      </CardContent>
                    </Card>
-                    {state.message && (
-                     <Alert variant={state.errors ? 'destructive' : 'default'} className="mt-4">
-                        <AlertTitle>{state.errors ? 'Error' : 'Success'}</AlertTitle>
+                    {state?.message && state.errors && (
+                     <Alert variant={'destructive'} className="mt-4">
+                        <AlertTitle>Error</AlertTitle>
                         <AlertDescription>{state.message}</AlertDescription>
                       </Alert>
                    )}
@@ -251,5 +251,3 @@ export default function NewProjectPage() {
     </div>
   );
 }
-
-    
