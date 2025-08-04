@@ -28,14 +28,15 @@ export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
 
   // // `/_next/` and `/api/` are ignored by the middleware, but we need to ignore files in `public`
+  const publicFile = /\.(.*)$/
   if (
-    [
-      '/manifest.json',
-      '/favicon.ico',
-      // your other files in `public`
-    ].includes(pathname)
-  )
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/api') ||
+    pathname.startsWith('/static') ||
+    publicFile.test(pathname)
+  ) {
     return
+  }
 
   // Check if there is any supported locale in the pathname
   const pathnameIsMissingLocale = i18n.locales.every(

@@ -38,6 +38,7 @@ const navLabels: Record<string, {en: string, ar: string}> = {
 export function Header({ lang }: { lang: Locale }) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isHomePage = pathname === `/${lang}`;
 
   const getLabel = (key: string) => navLabels[key][lang]
 
@@ -111,7 +112,7 @@ export function Header({ lang }: { lang: Locale }) {
 
 
           <div className="flex items-center gap-4 ml-6">
-             <LanguageSwitcher />
+             {isHomePage && <LanguageSwitcher />}
             <div className='hidden md:flex'>
               <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
                   <Link href={`/${lang}/contact`}>{getLabel('requestAQuote')}</Link>
