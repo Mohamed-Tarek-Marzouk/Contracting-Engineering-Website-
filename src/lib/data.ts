@@ -79,7 +79,7 @@ export const projects: Project[] = [
     title: 'Modern Villa Oasis',
     category: 'Residential',
     categoryKey: 'residential',
-    imageUrl: 'https://cdn.pixabay.com/photo/2020/06/09/15/15/house-5278795_1280.png',
+    imageUrl: 'https://placehold.co/600x400.png',
     dataAiHint: 'modern villa exterior',
     description: 'A stunning modern villa featuring minimalist design, expansive glass walls, and a seamless indoor-outdoor flow. The project focused on creating a tranquil oasis with luxurious amenities and sustainable features.',
     details: {
