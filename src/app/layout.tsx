@@ -3,6 +3,7 @@ import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Toaster } from '@/components/ui/toaster';
+import { AnimatedPage } from '@/components/animation/AnimatedPage';
 
 export const metadata: Metadata = {
   title: {
@@ -29,7 +30,9 @@ export default function RootLayout({
       <body className="font-body bg-background text-foreground antialiased">
         <div className="flex flex-col min-h-screen">
           <Header />
-          <main className="flex-grow">{children}</main>
+          <main className="flex-grow">
+            <AnimatedPage>{children}</AnimatedPage>
+          </main>
           <Footer />
         </div>
         <Toaster />

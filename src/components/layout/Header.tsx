@@ -8,6 +8,7 @@ import { Logo } from '@/components/Logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -24,7 +25,12 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <motion.header 
+      className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
       <div className="container flex h-16 items-center">
         <div className="mr-auto hidden md:flex">
           <Logo />
@@ -94,6 +100,6 @@ export function Header() {
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
