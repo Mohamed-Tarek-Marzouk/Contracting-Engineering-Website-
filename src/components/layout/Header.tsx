@@ -26,18 +26,18 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
-        <div className="mr-4 hidden md:flex">
+        <div className="mr-auto hidden md:flex">
           <Logo />
         </div>
-        <div className="flex flex-1 items-center justify-between">
+        <div className="flex flex-1 items-center justify-end">
           <nav className="hidden md:flex items-center gap-6 text-sm">
             {navLinks.map(({ href, label }) => (
               <Link
                 key={label}
                 href={href}
                 className={cn(
-                  'transition-colors hover:text-foreground/80',
-                  pathname === href ? 'text-foreground' : 'text-foreground/60'
+                  'transition-colors hover:text-foreground/80 font-medium',
+                  pathname === href ? 'text-primary' : 'text-foreground/60'
                 )}
               >
                 {label}
@@ -46,7 +46,7 @@ export function Header() {
           </nav>
 
           {/* Mobile Menu */}
-          <div className="md:hidden">
+          <div className="md:hidden flex-1">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -87,7 +87,7 @@ export function Header() {
           </div>
 
 
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-2 ml-6">
             <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
                 <Link href="/contact">Request A Quote</Link>
             </Button>

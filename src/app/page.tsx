@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[80vh] flex items-center justify-center text-center text-white bg-primary">
+      <section className="relative h-[60vh] md:h-[80vh] flex items-center justify-center text-center text-white bg-slate-900">
          <Image 
           src="https://placehold.co/1920x1080.png" 
           alt="Construction site background" 
@@ -21,7 +21,7 @@ export default function Home() {
           data-ai-hint="construction site"
         />
         <div className="relative z-10 p-4">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-headline font-bold text-background">Tekam Contracting & Engineering</h1>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-headline font-bold text-white">Tekam Contracting & Engineering</h1>
           <p className="mt-4 text-lg md:text-2xl text-accent">Building the Future, Restoring the Past.</p>
           <Button asChild size="lg" className="mt-8 bg-accent text-accent-foreground hover:bg-accent/90">
             <Link href="/contact">Request a Quote</Link>
@@ -74,7 +74,7 @@ export default function Home() {
               </Card>
             ))}
           </div>
-          <Button asChild variant="link" className="mt-8 text-accent">
+          <Button asChild variant="link" className="mt-8 text-primary">
             <Link href="/services">View All Services <ArrowRight className="ml-2 h-4 w-4" /></Link>
           </Button>
         </div>
@@ -110,7 +110,7 @@ export default function Home() {
             ))}
           </div>
            <div className="text-center mt-8">
-             <Button asChild className="bg-primary hover:bg-primary/90">
+             <Button asChild>
                <Link href="/projects">View All Projects</Link>
              </Button>
            </div>

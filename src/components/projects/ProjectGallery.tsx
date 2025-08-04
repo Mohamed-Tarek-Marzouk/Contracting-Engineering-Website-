@@ -69,7 +69,7 @@ export default function ProjectGallery({ projects, categories }: ProjectGalleryP
                   <CardDescription>{project.category}</CardDescription>
                 </CardHeader>
                 <CardContent className="mt-auto">
-                   <Button asChild variant="link" className="p-0 text-accent">
+                   <Button asChild variant="link" className="p-0 text-primary">
                     <Link href={`/projects/${project.slug}`}>View Project Details</Link>
                   </Button>
                 </CardContent>

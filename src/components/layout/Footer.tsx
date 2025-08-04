@@ -11,12 +11,12 @@ const navLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-slate-900 text-slate-50">
       <div className="container py-12 px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <Logo className="fill-primary-foreground text-primary-foreground" />
-            <p className="text-sm text-primary-foreground/80">
+            <Logo className="fill-slate-50 text-slate-50" />
+            <p className="text-sm text-slate-300">
               Your trusted partner in construction and engineering, delivering excellence and innovation from start to finish.
             </p>
           </div>
@@ -60,19 +60,19 @@ export function Footer() {
              <h3 className="text-lg font-semibold text-accent font-headline">Follow Us</h3>
             <div className="flex mt-4 space-x-4">
               <Link href="#" aria-label="Facebook">
-                <Facebook className="h-6 w-6 text-primary-foreground hover:text-accent transition-colors" />
+                <Facebook className="h-6 w-6 text-slate-50 hover:text-accent transition-colors" />
               </Link>
               <Link href="#" aria-label="Twitter">
-                <Twitter className="h-6 w-6 text-primary-foreground hover:text-accent transition-colors" />
+                <Twitter className="h-6 w-6 text-slate-50 hover:text-accent transition-colors" />
               </Link>
               <Link href="#" aria-label="LinkedIn">
-                <Linkedin className="h-6 w-6 text-primary-foreground hover:text-accent transition-colors" />
+                <Linkedin className="h-6 w-6 text-slate-50 hover:text-accent transition-colors" />
               </Link>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-primary-foreground/20 text-center text-sm text-primary-foreground/60">
+        <div className="mt-8 pt-8 border-t border-slate-700 text-center text-sm text-slate-400">
           <p>&copy; {new Date().getFullYear()} Tekam Contracting & Engineering. All Rights Reserved.</p>
         </div>
       </div>

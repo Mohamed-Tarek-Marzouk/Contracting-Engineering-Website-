@@ -16,7 +16,7 @@ export function Logo({ className, ...props }: SVGProps<SVGSVGElement>) {
         <path d="M3 3h18v3h-7.5v15h-3V6H3V3z" className="fill-primary" />
         <path d="M19.5 7h-5v2h5V7z" className="fill-accent"/>
       </svg>
-      <span className="self-center text-xl font-bold whitespace-nowrap text-primary font-headline">
+      <span className="self-center text-xl font-bold whitespace-nowrap text-foreground font-headline">
         Tekam
       </span>
     </Link>

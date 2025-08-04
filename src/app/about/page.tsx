@@ -13,7 +13,7 @@ export default function AboutPage() {
     <div className="container mx-auto py-16 px-4 md:px-6">
       {/* Company Overview Section */}
       <section className="text-center">
-        <h1 className="text-4xl md:text-5xl font-headline font-bold">About Tekam</h1>
+        <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary">About Tekam</h1>
         <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
           Your trusted partner in building the future. We combine decades of experience with cutting-edge technology to deliver exceptional results in contracting and engineering.
         </p>
@@ -71,7 +71,7 @@ export default function AboutPage() {
 
       {/* Team Section */}
       <section className="mt-16">
-        <h2 className="text-4xl font-headline font-bold text-center">Meet Our Team</h2>
+        <h2 className="text-4xl font-headline font-bold text-center text-primary">Meet Our Team</h2>
         <p className="mt-4 text-center max-w-2xl mx-auto text-muted-foreground">The driving force behind our success is our team of dedicated and experienced professionals.</p>
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member) => (

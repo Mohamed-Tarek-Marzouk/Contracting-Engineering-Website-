@@ -13,7 +13,7 @@ export default function ContactPage() {
   return (
     <div className="container mx-auto py-16 px-4 md:px-6">
       <section className="text-center">
-        <h1 className="text-4xl md:text-5xl font-headline font-bold">Contact Us</h1>
+        <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary">Contact Us</h1>
         <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
           We'd love to hear from you. Whether you have a question about our services or want to discuss your next project, our team is ready to help.
         </p>
@@ -47,11 +47,11 @@ export default function ContactPage() {
                </div>
                <div className="flex items-center gap-4">
                   <Phone className="w-6 h-6 text-accent"/>
-                  <a href="tel:+1234567890" className="hover:text-accent">(123) 456-7890</a>
+                  <a href="tel:+1234567890" className="hover:text-primary">(123) 456-7890</a>
                </div>
                <div className="flex items-center gap-4">
                   <Mail className="w-6 h-6 text-accent"/>
-                  <a href="mailto:info@tekam.com" className="hover:text-accent">info@tekam.com</a>
+                  <a href="mailto:info@tekam.com" className="hover:text-primary">info@tekam.com</a>
                </div>
             </CardContent>
           </Card>

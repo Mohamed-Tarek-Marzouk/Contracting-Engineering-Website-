@@ -13,7 +13,7 @@ export default function BlogPage() {
       <Card className="max-w-4xl mx-auto shadow-lg">
         <CardHeader className="text-center">
           <CardTitle className="font-headline text-4xl text-primary">AI Blog Post Generator</CardTitle>
-          <CardDescription className="text-lg mt-2">
+          <CardDescription className="text-lg mt-2 text-muted-foreground">
             Generate initial drafts for your blog. Provide a topic and our AI will create a post.
             <br />
             <span className="text-sm text-muted-foreground">Human review and editing are recommended before publishing.</span>
