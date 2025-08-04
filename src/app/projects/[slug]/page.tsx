@@ -38,7 +38,7 @@ export default function ProjectDetailPage({ params }: Props) {
     <div className="container mx-auto py-16 px-4 md:px-6">
       <Reveal>
         <Button asChild variant="ghost" className="mb-8">
-          <Link href="/projects">
+          <Link href={`/projects`}>
             <ChevronLeft className="mr-2 h-4 w-4" />
             Back to Projects
           </Link>
