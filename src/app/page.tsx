@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { services, projects } from '@/lib/data';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { services, projects, heroSlides } from '@/lib/data';
 import { ArrowRight, Award, Building, Users } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,29 +13,46 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[80vh] flex items-center justify-center text-center text-white bg-slate-900">
-         <Image 
-          src="https://placehold.co/1920x1080.png" 
-          alt="Construction site background" 
-          fill
-          style={{objectFit: "cover"}}
-          className="opacity-20"
-          data-ai-hint="construction site"
-          priority
-        />
-        <div className="relative z-10 p-4">
-           <Reveal>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-headline font-bold text-white">Tekam Contracting & Engineering</h1>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <p className="mt-4 text-lg md:text-2xl text-accent">Building the Future, Restoring the Past.</p>
-          </Reveal>
-          <Reveal delay={0.4}>
-            <Button asChild size="lg" className="mt-8 bg-accent text-accent-foreground hover:bg-accent/90">
-              <Link href="/contact">Request a Quote</Link>
-            </Button>
-          </Reveal>
-        </div>
+      <section className="relative hero-carousel">
+        <Carousel
+          opts={{
+            align: 'start',
+            loop: true,
+          }}
+        >
+          <CarouselContent>
+            {heroSlides.map((slide, index) => (
+              <CarouselItem key={index}>
+                <div className="relative h-[60vh] md:h-[80vh] flex items-center justify-center text-center text-white bg-slate-900">
+                  <Image
+                    src={slide.imageUrl}
+                    alt="Construction site background"
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    className="opacity-20"
+                    data-ai-hint={slide.dataAiHint}
+                    priority={index === 0}
+                  />
+                  <div className="relative z-10 p-4">
+                    <Reveal>
+                      <h1 className="text-4xl md:text-6xl lg:text-7xl font-headline font-bold text-white">{slide.title}</h1>
+                    </Reveal>
+                    <Reveal delay={0.2}>
+                      <p className="mt-4 text-lg md:text-2xl text-accent">{slide.subtitle}</p>
+                    </Reveal>
+                    <Reveal delay={0.4}>
+                      <Button asChild size="lg" className="mt-8 bg-accent text-accent-foreground hover:bg-accent/90">
+                        <Link href={slide.link}>Request a Quote</Link>
+                      </Button>
+                    </Reveal>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 embla__control embla__prev" />
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 embla__control embla__next" />
+        </Carousel>
       </section>
 
       {/* Stats Section */}

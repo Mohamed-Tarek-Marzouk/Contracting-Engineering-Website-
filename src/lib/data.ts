@@ -1,5 +1,38 @@
 import { GanttChartSquare, Scaling, Paintbrush, Wrench, Construction, LandPlot, type LucideIcon } from 'lucide-react';
 
+export interface HeroSlide {
+  imageUrl: string;
+  dataAiHint: string;
+  title: string;
+  subtitle: string;
+  link: string;
+}
+
+export const heroSlides: HeroSlide[] = [
+  {
+    imageUrl: 'https://placehold.co/1920x1080.png',
+    dataAiHint: 'construction site',
+    title: 'Tekam Contracting & Engineering',
+    subtitle: 'Building the Future, Restoring the Past.',
+    link: '/contact',
+  },
+  {
+    imageUrl: 'https://placehold.co/1920x1080.png',
+    dataAiHint: 'modern architecture',
+    title: 'Innovative Architectural Design',
+    subtitle: 'Bringing Your Vision to Life with Precision and Style.',
+    link: '/services',
+  },
+  {
+    imageUrl: 'https://placehold.co/1920x1080.png',
+    dataAiHint: 'bridge infrastructure',
+    title: 'Excellence in Infrastructure',
+    subtitle: 'Constructing Durable and Reliable Infrastructure for Tomorrow.',
+    link: '/projects',
+  },
+];
+
+
 export interface Service {
   title: string;
   description: string;
@@ -91,6 +124,7 @@ export const projects: Project[] = [
       { url: 'https://placehold.co/1280x720.png', hint: 'villa living room' },
       { url: 'https://placehold.co/1280x720.png', hint: 'villa swimming pool' },
       { url: 'https://placehold.co/1280x720.png', hint: 'villa bedroom' },
+      { url: 'https://placehold.co/1280x720.png', hint: 'villa exterior view' },
     ],
   },
   {
@@ -110,7 +144,8 @@ export const projects: Project[] = [
     gallery: [
       { url: 'https://placehold.co/1280x720.png', hint: 'office building lobby' },
       { url: 'https://placehold.co/1280x720.png', hint: 'modern office interior' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'building exterior night' },
+      { url: 'https://placehold.co/1280x720.png', hint: 'corporate headquarters exterior' },
+      { url: 'https://placehold.co/1280x720.png', hint: 'building exterior night view' },
     ],
   },
   {
@@ -130,7 +165,8 @@ export const projects: Project[] = [
     gallery: [
       { url: 'https://placehold.co/1280x720.png', hint: 'bridge construction work' },
       { url: 'https://placehold.co/1280x720.png', hint: 'bridge aerial view' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'finished bridge traffic' },
+      { url: 'https://placehold.co/1280x720.png', hint: 'bridge structural reinforcement' },
+      { url: 'https://placehold.co/1280x720.png', hint: 'finished bridge traffic flow' },
     ],
   },
     {
@@ -148,9 +184,10 @@ export const projects: Project[] = [
       services: ['Architectural Design', 'General Contracting', 'Finishing Works'],
     },
     gallery: [
-      { url: 'https://placehold.co/1280x720.png', hint: 'library interior reading' },
+      { url: 'https://placehold.co/1280x720.png', hint: 'library grand exterior' },
       { url: 'https://placehold.co/1280x720.png', hint: 'library facade detail' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'archive storage room' },
+      { url: 'https://placehold.co/1280x720.png', hint: 'library reading hall' },
+      { url: 'https://placehold.co/1280x720.png', hint: 'archive storage area' },
     ],
   },
   {
@@ -171,6 +208,7 @@ export const projects: Project[] = [
       { url: 'https://placehold.co/1280x720.png', hint: 'apartment living area' },
       { url: 'https://placehold.co/1280x720.png', hint: 'waterfront view balcony' },
       { url: 'https://placehold.co/1280x720.png', hint: 'apartment complex pool' },
+      { url: 'https://placehold.co/1280x720.png', hint: 'apartment complex exterior' },
     ],
   },
    {
@@ -189,8 +227,9 @@ export const projects: Project[] = [
     },
     gallery: [
       { url: 'https://placehold.co/1280x720.png', hint: 'restored hotel lobby' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'ornate ceiling detail' },
+      { url: 'https://placehold.co/1280x720.png', hint: 'historic building exterior' },
       { url: 'https://placehold.co/1280x720.png', hint: 'boutique hotel room' },
+      { url: 'https://placehold.co/1280x720.png', hint: 'restored facade detail' },
     ],
   },
 ];

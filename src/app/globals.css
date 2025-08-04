@@ -86,3 +86,15 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .hero-carousel .embla__control {
+    @apply text-white bg-black/50 hover:bg-black/75;
+  }
+  .hero-carousel .embla__control.embla__prev {
+    @apply left-4;
+  }
+  .hero-carousel .embla__control.embla__next {
+    @apply right-4;
+  }
+}
