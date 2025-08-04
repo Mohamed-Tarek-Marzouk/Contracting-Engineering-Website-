@@ -1,46 +1,5 @@
 import { GanttChartSquare, Scaling, Paintbrush, Wrench, Construction, LandPlot, type LucideIcon } from 'lucide-react';
 
-export interface HeroSlide {
-  imageUrl: string;
-  dataAiHint: string;
-  title: string;
-  subtitle: string;
-  link: string;
-}
-
-export const heroSlides: HeroSlide[] = [
-  {
-    imageUrl: 'https://i.postimg.cc/13y4DcX5/pixlr-image-generator-68906d08208321f490784ad9-1.png',
-    dataAiHint: 'construction site',
-    title: 'Tekam Contracting & Engineering',
-    subtitle: 'Building the Future, Restoring the Past.',
-    link: '/contact',
-  },
-  {
-    imageUrl: 'https://i.postimg.cc/BbDtBm2t/pixlr-image-generator-68906d1d8366e18f480d4a18-1.png',
-    dataAiHint: 'modern architecture',
-    title: 'Innovative Architectural Design',
-    subtitle: 'Bringing Your Vision to Life with Precision and Style.',
-    link: '/services',
-  },
-  {
-    imageUrl: 'https://i.postimg.cc/3J5kxHHG/pixlr-image-generator-68906d1d8366e18f480d4a19-1.png',
-    dataAiHint: 'bridge infrastructure',
-    title: 'Excellence in Infrastructure',
-    subtitle: 'Constructing Durable and Reliable Infrastructure for Tomorrow.',
-    link: '/projects',
-  },
-  {
-    imageUrl: 'https://i.postimg.cc/X7fpZDVz/pixlr-image-generator-68906d94208321f4907855db.png',
-    dataAiHint: 'engineering technology',
-    title: 'Advanced Engineering Solutions',
-    subtitle: 'Delivering Cutting-edge Solutions for Complex Challenges.',
-    link: '/about',
-  },
-];
-
-
-
 export interface Service {
   title: string;
   description: string;
@@ -129,11 +88,24 @@ export const projects: Project[] = [
       services: ['Architectural Design', 'General Contracting', 'Interior Finishing'],
     },
     gallery: [
-      { url: 'https://placehold.co/1280x720.png', hint: 'villa living room' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'villa swimming pool' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'villa bedroom' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'villa exterior view' },
+      { 
+        url: 'https://i.postimg.cc/Y0QHjZw2/Leonardo-Phoenix-10-A-stunning-modern-villa-oasis-in-a-residen-0.jpg', 
+        hint: 'villa living room' 
+      },
+      { 
+        url: 'https://i.postimg.cc/59z1PYFc/Leonardo-Phoenix-10-A-stunning-modern-villa-oasis-in-a-residen-1.jpg', 
+        hint: 'villa swimming pool' 
+      },
+      { 
+        url: 'https://i.postimg.cc/RFkmS9yb/Leonardo-Phoenix-10-A-stunning-modern-villa-oasis-in-a-residen-2.jpg', 
+        hint: 'villa bedroom' 
+      },
+      { 
+        url: 'https://i.postimg.cc/FsQvwrjY/Leonardo-Phoenix-10-A-stunning-modern-villa-oasis-in-a-residen-3.jpg', 
+        hint: 'villa exterior view' 
+      },
     ],
+    
   },
   {
     id: '2',
@@ -150,11 +122,24 @@ export const projects: Project[] = [
       services: ['General Contracting', 'Structural Design', 'Infrastructure Works'],
     },
     gallery: [
-      { url: 'https://placehold.co/1280x720.png', hint: 'office building lobby' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'modern office interior' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'corporate headquarters exterior' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'building exterior night view' },
+      { 
+        url: 'https://i.postimg.cc/50RcP1f2/Leonardo-Phoenix-10-A-stateoftheart-20story-corporate-headquar-0.jpg', 
+        hint: 'office building lobby' 
+      },
+      { 
+        url: 'https://i.postimg.cc/tgDGxWfP/Leonardo-Phoenix-10-A-stateoftheart-20story-corporate-headquar-1.jpg', 
+        hint: 'modern office interior' 
+      },
+      { 
+        url: 'https://i.postimg.cc/sXXd91dL/Leonardo-Phoenix-10-A-stateoftheart-20story-corporate-headquar-2.jpg', 
+        hint: 'corporate headquarters exterior' 
+      },
+      { 
+        url: 'https://i.postimg.cc/nrjyg5LY/Leonardo-Phoenix-10-A-stateoftheart-20story-corporate-headquar-3.jpg', 
+        hint: 'building exterior night view' 
+      },
     ],
+    
   },
   {
     id: '3',
@@ -171,11 +156,24 @@ export const projects: Project[] = [
       services: ['Infrastructure Works', 'Structural Design', 'Maintenance'],
     },
     gallery: [
-      { url: 'https://placehold.co/1280x720.png', hint: 'bridge construction work' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'bridge aerial view' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'bridge structural reinforcement' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'finished bridge traffic flow' },
+      { 
+        url: 'https://i.postimg.cc/Hs7mhJcD/Leonardo-Phoenix-10-A-large-modern-city-bridge-undergoing-comp-0.jpg', 
+        hint: 'bridge construction work' 
+      },
+      { 
+        url: 'https://i.postimg.cc/8kYD4dCm/Leonardo-Phoenix-10-A-large-modern-city-bridge-undergoing-comp-1.jpg', 
+        hint: 'bridge aerial view' 
+      },
+      { 
+        url: 'https://i.postimg.cc/Mp2w2WVc/Leonardo-Phoenix-10-A-large-modern-city-bridge-undergoing-comp-2.jpg', 
+        hint: 'bridge structural reinforcement' 
+      },
+      { 
+        url: 'https://i.postimg.cc/Fzw4Kv6B/Leonardo-Phoenix-10-A-large-modern-city-bridge-undergoing-comp-3.jpg', 
+        hint: 'finished bridge traffic flow' 
+      },
     ],
+    
   },
     {
     id: '4',
@@ -192,11 +190,24 @@ export const projects: Project[] = [
       services: ['Architectural Design', 'General Contracting', 'Finishing Works'],
     },
     gallery: [
-      { url: 'https://placehold.co/1280x720.png', hint: 'library grand exterior' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'library facade detail' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'library reading hall' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'archive storage area' },
+      { 
+        url: 'https://i.postimg.cc/sfT1rZgM/Leonardo-Phoenix-10-A-grand-National-Library-and-Archives-buil-0.jpg', 
+        hint: 'library grand exterior' 
+      },
+      { 
+        url: 'https://i.postimg.cc/sD1xDDMw/Leonardo-Phoenix-10-A-grand-National-Library-and-Archives-buil-1.jpg', 
+        hint: 'library facade detail' 
+      },
+      { 
+        url: 'https://i.postimg.cc/MpQGVPbB/Leonardo-Phoenix-10-A-grand-National-Library-and-Archives-buil-2.jpg', 
+        hint: 'library reading hall' 
+      },
+      { 
+        url: 'https://i.postimg.cc/sD8XBdSy/Leonardo-Phoenix-10-A-grand-National-Library-and-Archives-buil-3.jpg', 
+        hint: 'archive storage area' 
+      },
     ],
+    
   },
   {
     id: '5',
@@ -213,11 +224,24 @@ export const projects: Project[] = [
       services: ['General Contracting', 'Landscaping', 'Interior Finishing'],
     },
     gallery: [
-      { url: 'https://placehold.co/1280x720.png', hint: 'apartment living area' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'waterfront view balcony' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'apartment complex pool' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'apartment complex exterior' },
+      { 
+        url: 'https://i.postimg.cc/HkVyK90W/Leonardo-Phoenix-10-A-luxury-waterfront-residential-complex-wi-0.jpg', 
+        hint: 'apartment living area' 
+      },
+      { 
+        url: 'https://i.postimg.cc/7YBzmW2Q/Leonardo-Phoenix-10-A-luxury-waterfront-residential-complex-wi-1.jpg', 
+        hint: 'waterfront view balcony' 
+      },
+      { 
+        url: 'https://i.postimg.cc/kXM8NmBb/Leonardo-Phoenix-10-A-luxury-waterfront-residential-complex-wi-2.jpg', 
+        hint: 'apartment complex pool' 
+      },
+      { 
+        url: 'https://i.postimg.cc/8z96VfwR/Leonardo-Phoenix-10-A-luxury-waterfront-residential-complex-wi-3.jpg', 
+        hint: 'apartment complex exterior' 
+      },
     ],
+    
   },
    {
     id: '6',
@@ -234,10 +258,10 @@ export const projects: Project[] = [
       services: ['Renovation & Maintenance', 'Architectural Design', 'Finishing & Interior Works'],
     },
     gallery: [
-      { url: 'https://placehold.co/1280x720.png', hint: 'restored hotel lobby' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'historic building exterior' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'boutique hotel room' },
-      { url: 'https://placehold.co/1280x720.png', hint: 'restored facade detail' },
+      { url: 'https://i.postimg.cc/s2N0zxS5/Leonardo-Phoenix-10-Heritage-Building-Restoration-Commercial-Met-0.jpg', hint: 'apartment living area' },
+      { url: 'https://i.postimg.cc/k54hLKVn/Leonardo-Phoenix-10-Heritage-Building-Restoration-Commercial-Met-1.jpg', hint: 'waterfront view balcony' },
+      { url: 'https://i.postimg.cc/T3Q4kC37/Leonardo-Phoenix-10-Heritage-Building-Restoration-Commercial-Met-2.jpg', hint: 'apartment complex pool' },
+      { url: 'https://i.postimg.cc/ZRvs5mF2/Leonardo-Phoenix-10-Heritage-Building-Restoration-Commercial-Met-3.jpg', hint: 'apartment complex pool' },
     ],
   },
 ];
@@ -250,10 +274,10 @@ export interface TeamMember {
 }
 
 export const team: TeamMember[] = [
-  { name: 'John Doe', role: 'CEO & Founder', imageUrl: 'https://placehold.co/400x400.png', dataAiHint: 'male portrait' },
-  { name: 'Jane Smith', role: 'Chief Engineer', imageUrl: 'https://placehold.co/400x400.png', dataAiHint: 'female portrait' },
-  { name: 'Peter Jones', role: 'Head of Architecture', imageUrl: 'https://placehold.co/400x400.png', dataAiHint: 'male portrait professional' },
-  { name: 'Emily Williams', role: 'Project Manager', imageUrl: 'https://placehold.co/400x400.png', dataAiHint: 'female portrait professional' },
+  { name: 'John Doe', role: 'CEO & Founder', imageUrl: 'https://i.postimg.cc/13sJkTC0/pixlr-image-generator-689068bceb67ca035b165678.png', dataAiHint: 'male portrait' },
+  { name: 'Jane Smith', role: 'Chief Engineer', imageUrl: 'https://i.postimg.cc/5ttp0zM6/download.png', dataAiHint: 'female portrait' },
+  { name: 'Peter Jones', role: 'Head of Architecture', imageUrl: 'https://i.postimg.cc/fRCBDKpG/pixlr-image-generator-689068bceb67ca035b165679.png', dataAiHint: 'male portrait professional' },
+  { name: 'Emily Williams', role: 'Project Manager', imageUrl: 'https://i.postimg.cc/J46s8HKT/text-to-image-5.png', dataAiHint: 'female portrait professional' },
 ];
 
 export interface Testimonial {
@@ -269,21 +293,53 @@ export const testimonials: Testimonial[] = [
     name: 'Michael Brown', 
     company: 'Alpha Corp', 
     quote: 'Tekam\'s professionalism and commitment to quality were evident throughout our project. They delivered an outstanding commercial tower on time and within budget. We couldn\'t be happier with the results.',
-    imageUrl: 'https://placehold.co/100x100.png',
+    imageUrl: 'https://i.postimg.cc/Sj0tYxfH/pixlr-imagr-68906aa97436b12a4052750b-1.png',
     dataAiHint: 'male ceo' 
   },
   { 
     name: 'Sarah Davis', 
     company: 'Innovate Inc.', 
     quote: 'Working with Tekam was a seamless experience. Their team is knowledgeable, responsive, and dedicated to client satisfaction. Our new headquarters is everything we dreamed of and more.',
-    imageUrl: 'https://placehold.co/100x100.png',
+    imageUrl: 'https://i.postimg.cc/Vv0VNCnj/pixlr-image-generator-68906aa97436b12a4052750b.png',
     dataAiHint: 'female ceo'
   },
   { 
     name: 'David Wilson', 
     company: 'Private Homeowner', 
     quote: 'From the initial design to the final touches, Tekam transformed our vision for a modern villa into a stunning reality. Their attention to detail and craftsmanship are second to none.',
-    imageUrl: 'https://placehold.co/100x100.png',
+    imageUrl: 'https://i.postimg.cc/FRB6mZdr/pixlr-image-generator-68906aa97436b12a4052750b-1.png',
     dataAiHint: 'man smiling'
+  },
+];
+
+export interface HeroSlide {
+  title: string;
+  subtitle: string;
+  imageUrl: string;
+  dataAiHint: string;
+  link: string;
+}
+
+export const heroSlides: HeroSlide[] = [
+  {
+    title: 'Building a Better Future',
+    subtitle: 'Excellence in Construction and Engineering',
+    imageUrl: 'https://i.postimg.cc/jdH6c2SZ/600-400-4.jpg',
+    dataAiHint: 'construction site',
+    link: '/contact',
+  },
+  {
+    title: 'Innovation in Every Detail',
+    subtitle: 'From Concept to Completion',
+    imageUrl: 'https://i.postimg.cc/dVn2MfdC/600-400-5.jpg',
+    dataAiHint: 'architectural design blueprint',
+    link: '/services',
+  },
+  {
+    title: 'Your Vision, Our Expertise',
+    subtitle: 'Let\'s Build Together',
+    imageUrl: 'https://i.postimg.cc/MT1Xwc4L/600-400.png',
+    dataAiHint: 'team meeting construction',
+    link: '/projects',
   },
 ];
