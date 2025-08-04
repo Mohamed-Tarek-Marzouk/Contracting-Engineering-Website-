@@ -103,8 +103,8 @@ export default function ProjectDetailPage({ params }: Props) {
                 <div>
                   <h3 className="font-semibold text-muted-foreground">Services Rendered</h3>
                   <div className="flex flex-wrap gap-2 mt-2">
-                    {project.details.services.map(service => (
-                      <Badge key={_getLabel(service)} variant="outline">{_getLabel(service)}</Badge>
+                    {project.details.services.map((service, i) => (
+                      <Badge key={i} variant="outline">{_getLabel(service)}</Badge>
                     ))}
                   </div>
                 </div>
